@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /*font-family: Arial;*/
+  /*font-family: Georgia, serif;*/
+  font-family: "Comic Sans MS", cursive, sans-serif
+  font-family: "Lucida Console", Monaco, monospace
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+</style>
+
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>From Patches to Pictures (PaQ-2-PiQ): Mapping the Perceptual Space of Picture Quality</h1>
+  <p>Image quality assessment, large-scale image quality database.</p>
+
+  <div align = "center">
+    <div class="authorname" style="font-size:large;line-adjust:0">
+      Zhenqiang Ying<sup>1*</sup>, 
+      Haoran Niu<sup>1*</sup>, 
+      Praful Gupta<sup>1</sup>, 
+      Dhruv Mahajan<sup>2</sup>, 
+      Deepti Ghadiyaram<sup>2+</sup>, 
+      Alan Bovik<sup>1+</sup>, 
+    </div>
+    <div class="authoraddress" style="line-adjust:0">
+      <sup>1</sup>University of Texas at Austin,
+      <sup>2</sup>Facebook AI</div>
+    <div class="authoremail email" style="line-adjust:0">
+      {zqying, haoranniu, praful gupta}@utexas.edu, {dhruvm, deeptigp}@fb.com, bovik@ece.utexas.edu
+    </div>
+    <br/>
+  <a href="https://github.com/baidut/PaQ-2-PiQ">Source Code (Coming soon)</a>
+  </div>
+  <br>
+</div>
+
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <img src="demo/out_of_focus0470_raw.jpg" style="width:100%">
+    <img src="demo/6862937532_raw.jpg" style="width:100%">
+    <!-- <img src="demo/4462477090_raw.jpg" style="width:100%"> -->
+    <!-- <img src="demo/56_raw.jpg" style="width:100%"> -->
+  </div>  
+  <div class="column">
+    <img src="demo/2017266_raw.jpg" style="width:100%">
+<!--     <img src="demo/4582906874_raw.jpg" style="width:100%">
+    <img src="demo/6596306_raw.jpg" style="width:100%">
+    <img src="demo/4841257153_raw.jpg" style="width:100%"> -->
+    <!-- <img src="demo/4491574274_raw.jpg" style="width:100%"> -->
+    <!-- <img src="demo/6537150655_raw.jpg" style="width:100%"> -->
+    <!-- <img src="demo/7384140824_raw.jpg" style="width:100%"> -->
+    <!-- <img src="demo/5005558786_raw.jpg" style="width:100%"> -->
+    <!-- <img src="demo/299519765_raw.jpg" style="width:100%"> -->
+    <img src="demo/motion0160_raw.jpg" style="width:100%">
+    <img src="demo/motion0089_raw.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="demo/out_of_focus0385_raw.jpg" style="width:100%">
+    <img src="demo/out_of_focus0161_raw.jpg" style="width:100%">
+    <img src="demo/out_of_focus0083_raw.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="demo/motion0022_raw.jpg" style="width:100%">
+    <img src="demo/motion0072_raw.jpg" style="width:100%">
+    <!-- <img src="demo/4904294830_raw.jpg" style="width:100%"> -->
+  </div>
+</div>
+
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('img').hover(function(){
+      $(this).attr('src', $(this).attr('src').replace("_raw.jpg", "_map.jpg"));
+    },function(){
+      $(this).attr('src', $(this).attr('src').replace("_map.jpg", "_raw.jpg")); 
+    });
+});
+  
+
+</script>
+</html>

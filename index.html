@@ -135,6 +135,12 @@
           },function(){
             $(this).attr('src', $(this).attr('src').replace("_map.jpg", "_raw.jpg")); 
           });
+        // mobile user
+        $('img').bind('touchstart', function(){
+              $(this).attr('src', $(this).attr('src').replace("_raw.jpg", "_map.jpg"));
+          }).bind('touchend', function(){
+              $(this).attr('src', $(this).attr('src').replace("_map.jpg", "_raw.jpg")); 
+          });
       });
     </script>
     <script>new WOW().init();</script>

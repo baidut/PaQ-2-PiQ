@@ -1,95 +1,66 @@
 <!DOCTYPE html>
-<html>
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  /*font-family: Arial;*/
-  /*font-family: Georgia, serif;*/
-  font-family: "Comic Sans MS", cursive, sans-serif
-  font-family: "Lucida Console", Monaco, monospace
-}
-
-.header {
-  text-align: center;
-  padding: 32px;
-}
-
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
-
-/* Create four equal columns that sits next to each other */
-.column {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
-}
-
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
-  }
-}
-</style>
+<html class="full-height" lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PaQ-2-PiQ</title>
+    <meta name="description" content="Material design app landing page template built by TemplateFlip.com"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/photo.css" rel="stylesheet">
+  </head>
+  <body id="top">
+    <header>
+      <!-- Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" id="navbar">
+        <div class="container"><a class="navbar-brand" href="#"><strong>From Patches to Pictures (PaQ-2-PiQ): Mapping the Perceptual Space of Picture Quality</strong></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <!-- <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link active" href="#features">Features</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#screenshots">Screenshots</a></li>
+              <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#about">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+              <li class="nav-item"><a class="nav-link" href="#client">Client</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul><a class="btn btn-default btn-rounded my-0" href="#">Download</a>
+          </div> -->
+        </div>
+      </nav>
+      
+<section class="py-5 grey lighten-4" id="about">
+  <div class="container">
+    <div class="wow fadeIn">
+      <h2 class="h1 h1-responsive text-center my-5">From Patches to Pictures (PaQ-2-PiQ): <br/>Mapping the Perceptual Space of Picture Quality</h2>
+      <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
+        <div align = "center">
+          <div class="authorname" style="font-size:large;line-adjust:0">
+            Zhenqiang Ying<sup>1*</sup>, 
+            Haoran Niu<sup>1*</sup>, 
+            Praful Gupta<sup>1</sup>, 
+            Dhruv Mahajan<sup>2</sup>, 
+            Deepti Ghadiyaram<sup>2+</sup>, 
+            Alan Bovik<sup>1+</sup>, 
+          </div>
+          <div class="authoraddress" style="line-adjust:0">
+            <sup>1</sup>University of Texas at Austin,
+            <sup>2</sup>Facebook AI</div>
+          <div class="authoremail email" style="line-adjust:0">
+            {zqying, haoranniu, praful gupta}@utexas.edu, {dhruvm, deeptigp}@fb.com, bovik@ece.utexas.edu
+          </div>
+          <br/>
+          <a href="https://github.com/baidut/PaQ-2-PiQ">Source Code (Coming soon)</a>
+        </div>
 
 
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
-<body>
-
-<!-- Header -->
-<div class="header">
-  <h1>From Patches to Pictures (PaQ-2-PiQ): Mapping the Perceptual Space of Picture Quality</h1>
-  <p>Image quality assessment, large-scale image quality database.</p>
-
-  <div align = "center">
-    <div class="authorname" style="font-size:large;line-adjust:0">
-      Zhenqiang Ying<sup>1*</sup>, 
-      Haoran Niu<sup>1*</sup>, 
-      Praful Gupta<sup>1</sup>, 
-      Dhruv Mahajan<sup>2</sup>, 
-      Deepti Ghadiyaram<sup>2+</sup>, 
-      Alan Bovik<sup>1+</sup>, 
+      Blind or no-reference (NR) perceptual picture quality prediction is a difficult, unsolved problem of great consequence to the social and streaming media industries that impacts billions of viewers daily. Unfortunately, popular NR prediction models perform poorly on real-world distorted pictures. To advance progress on this problem, we introduce the largest (by far) subjective picture quality database, containing about 40000 real-world distorted pictures and 120000 patches, on which we collected about 4M human judgments of picture quality. Using these picture and patch quality labels, we built deep region-based architectures that learn to produce state-of-the-art global picture quality predictions as well as useful local picture quality maps. Our innovations include picture quality prediction architectures that produce global-to-local inferences as well as local-to-global inferences (via feedback).
+    </p>
     </div>
-    <div class="authoraddress" style="line-adjust:0">
-      <sup>1</sup>University of Texas at Austin,
-      <sup>2</sup>Facebook AI</div>
-    <div class="authoremail email" style="line-adjust:0">
-      {zqying, haoranniu, praful gupta}@utexas.edu, {dhruvm, deeptigp}@fb.com, bovik@ece.utexas.edu
-    </div>
-    <br/>
-  <a href="https://github.com/baidut/PaQ-2-PiQ">Source Code (Coming soon)</a>
-  </div>
-  <br>
-</div>
+
 
 <!-- Photo Grid -->
 <div class="row"> 
@@ -123,17 +94,49 @@ body {
     <!-- <img src="demo/4904294830_raw.jpg" style="width:100%"> -->
   </div>
 </div>
+</section>
 
-</body>
-<script type="text/javascript">
-$(document).ready(function(){
-  $('img').hover(function(){
-      $(this).attr('src', $(this).attr('src').replace("_raw.jpg", "_map.jpg"));
-    },function(){
-      $(this).attr('src', $(this).attr('src').replace("_map.jpg", "_raw.jpg")); 
-    });
-});
-  
-
-</script>
+<section class="text-center special-color-dark text-white" >
+  <!-- style="background: url('img/app-download.jpg');" -->
+  <div class="rgba-teal-light py-5">
+    <div class="container my-5">
+      <div class="wow fadeInDown"><i class="fa fa-cloud-upload fa-5x "></i></div>
+      <div class="wow fadeIn">
+        <h2 class="h1 h1-responsive pt-5 pb-2 text-center">Upload Your Image</h2>
+        <p>Coming soon. </p>
+      </div>
+      <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
+    </div>
+  </div>
+</section></div>
+    <footer class="page-footer special-color-dark">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-12 pb-3">
+<!--             <div class="flex-center">
+              <i class="fa fa-thumbs-up white-text"></i> Share on social media
+              <a class="px-3"><i class="fa fa-facebook fa-lg white-text"></i></a><a class="px-3"><i class="fa fa-twitter fa-lg white-text"></i></a><a class="px-3"><i class="fa fa-google-plus fa-lg white-text"></i></a><a class="px-3"><i class="fa fa-linkedin fa-lg white-text"></i></a></div> -->
+          </div>
+        </div>
+        <div class="container-fluid text-center">
+          <!-- <p class="mb-0">&copy; <a href="/">Material App</a>  -->
+            - Design: <a href="https://templateflip.com/" target="_blank">TemplateFlip</a></p>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('img').hover(function(){
+            $(this).attr('src', $(this).attr('src').replace("_raw.jpg", "_map.jpg"));
+          },function(){
+            $(this).attr('src', $(this).attr('src').replace("_map.jpg", "_raw.jpg")); 
+          });
+      });
+    </script>
+    <script>new WOW().init();</script>
+  </body>
 </html>

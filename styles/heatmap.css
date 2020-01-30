@@ -1,0 +1,28 @@
+#image-with-heatmap{
+  margin-left: auto;
+  margin-right: auto;
+  left: 0px;
+  top: 0px;
+  position: relative;
+}
+#heatmap{
+  left: 0px;
+  top: 0px;
+  /*position: relative; this will make the heatmap non-interactive*/
+  /*z-index: -1;*/
+  mix-blend-mode: overlay; /* this is important */
+
+  /*display: none;*/
+}
+#imtest {
+  position: absolute;
+  left: 0px;
+  top: 25px;
+  z-index: -1;
+}
+.heatmap:hover {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: -1;
+}

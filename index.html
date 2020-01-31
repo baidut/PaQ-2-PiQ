@@ -12,8 +12,9 @@
     <link href="styles/main.css" rel="stylesheet">
     <link href="styles/photo.css" rel="stylesheet">
     <link href="styles/heatmap.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="scripts/plotly-latest.min.js"></script>
+    
+    <!-- Filepond stylesheet -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
   </head>
   <body id="top">
     <header>
@@ -118,6 +119,8 @@
     <div class="container my-5">
 
       <div class="wow fadeInUp">
+        <form method="post" action="" enctype="multipart/form-data"
+                id="myform">
         <label>
           <h2 class="h1 h1-responsive pt-5 pb-2 text-center">
            <i class="fa fa-cloud-upload ">  <!-- fa-5x  -->
@@ -126,9 +129,11 @@
             Upload Your Image
           </h2>
         </label>
-        <p>Coming soon. </p>
+        </form>
+        
+        <p>Under construction. Please ignore the current results. Coming soon :) </p>
       </div>
-
+      <input type="file" class="filepond" id='filepond'>
 
         <div id='image-with-heatmap'>
           <img id='imtest' src='#'></img>
@@ -177,11 +182,23 @@
         </div>
       </div>
     </footer>
+
+
+    <!-- include jQuery library -->
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/mdb.min.js"></script>
+    
+
+    
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="scripts/plotly-latest.min.js"></script>
+
     <script type="text/javascript">
+
+
+
       function toggle_heatmap() {
         $(this).attr('src', $(this).attr('src').replace("_raw.jpg", "_map.jpg"));
       }
@@ -278,58 +295,69 @@
         Plotly.newPlot('heatmap', data, layout);
       }
 
+      function img_upload_success(response) {
+         // alert(response)
+         alert('onload')
+         console.log(response);
+      }
+      // const pond = FilePond.create(); // document.querySelector('.filepond');
+      FilePond.setOptions({
+          maxFiles: 1,
+          server: {
+              // url: 'http://localhost:8080', 
+              url: 'http://paq2piq.appspot.com',
+              process: {
+                  url: '/sz',
+                  method: 'POST',
+                  withCredentials: false,
+                  headers: {},
+                  timeout: 7000,
+                  onload: img_upload_success,
+                  onerror: null,
+                  ondata: null, 
+              }
+          }
+      });
+      FilePond.parse(document.body);
+      document.addEventListener('FilePond:loaded', e => {
+          console.log('FilePond ready for use', e.detail);
+          const inputElement = document.querySelector('#filepond');
+          // create a FilePond instance at the input element location
+          const pond = FilePond.create( inputElement );
+
+          // attributes have been set to pond options
+          console.log(pond.name);  // 'filepond'
+          console.log(pond.maxFiles); // 10
+          console.log(pond.required); // true
+
+          pond.on('addfile', (error, file) => {
+              if (error) {
+                  console.log('Oh no');
+                  return;
+              }
+              console.log('File added', file);
+              f = window.URL.createObjectURL(pond.getFile().file)
+              console.log(pond.getFile().file)
+              console.log(f)
+              // let img = new Image()
+              img = document.querySelector('#imtest');
+              img.src = f
+              img.onload = () => {
+                 // alert(img.width + " " + img.height);
+                 $('#image-with-heatmap').height(img.height);
+                 $('#image-with-heatmap').width(img.width);
+                 // re draw the heatmap
+                 draw_heatmap(img.height+25, img.width)
+              }
+          });
+      });
+
       $(document).ready(function(){
         $('.toggle').hover(toggle_heatmap, toggle_image);
         // mobile user
         $('.toggle').bind('touchstart', toggle_heatmap).bind('touchend', toggle_image)
         $('#image-with-heatmap').hover(show_heatmap, hide_heatmap);
-        $("#imgInp").change(function() {
-          img = readURL(this);
-          // post image to the server, then 
-          var fd = new FormData(); 
-          var files = this.files[0]; 
-          fd.append('file', files); 
-
-          $.ajax({ 
-            // https://extreme-hull-266715.appspot.com/hello
-            // http://localhost:5000/predict
-              // url: 'https://extreme-hull-266715.appspot.com/predict', // 
-              // url: 'http://127.0.0.1:8080/sz',
-              url: 'https://paq2piq.appspot.com/sz',
-              type: 'POST', 
-              data: fd, 
-              // cache: false,
-              processData: false, 
-              contentType: false, 
-              dataType: "json",  // what is RETURNED from the server
-              success: function(response){ 
-                  if(response != 0){ 
-                     alert('file uploaded'); 
-                     alert(response);
-                     $('#imtest').attr('src', img.src);
-                     draw_heatmap(img.height+25, img.width)
-                  } 
-                  else{ 
-                      alert('file not uploaded'); 
-                  } 
-              },
-              error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                  alert("--Status--: " + textStatus); alert("Error: " + errorThrown); 
-              },
-          });
-          // .done(function(data, textStatus, jqXHR){
-          //     console.log(data);
-          //     console.log(textStatus);
-          //     console.log(jqXHR);
-          //     console.log('Success!');
-          //     $("#resultFilename").text(data['name']);
-          //     $("#resultFilesize").text(data['size']);
-          // }).fail(function(data){
-          //     alert('error!');
-          // });
-
-        });
-        $("#imgUploaded").hover(hide_image, show_image);
+        // $("#imgUploaded").hover(hide_image, show_image);
 
       });
     </script>

@@ -12,7 +12,7 @@
 
 ![](https://img.shields.io/badge/python-3.6-blue.svg) ![](https://img.shields.io/badge/pytorch-1.0-red.svg) ![](https://img.shields.io/badge/fastai-1.0.60-green.svg) 
 
-[![License: CC BY-NC-SA 4.0](README/80x15-1580838953852.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 Code for our paper ["*From Patches to Pictures (PaQ-2-PiQ): Mapping the Perceptual Space of Picture Quality*"](https://arxiv.org/abs/1912.10088)
 

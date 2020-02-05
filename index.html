@@ -312,10 +312,11 @@
           maxFiles: 1,
           server: {
               // url: 'http://localhost:8080', 
-              url: 'http://10.157.89.130', 
+              url: 'https://10.157.89.130', 
+              // https gives ERR_CONNECTION_REFUSED
               // url: 'https://paq2piq.appspot.com',
               process: {
-                  url: '/roipool_model',
+                  url: '/roipool_model', // roipool_model  sz
                   method: 'POST',
                   withCredentials: false,
                   headers: {},

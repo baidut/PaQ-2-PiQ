@@ -31,9 +31,10 @@ koniq10k_scores_and_distributions
 class KonIQ(IqaLabel):
     path = '!data/KonIQ'
     folder = '1024x768'
-    img_raw_size = [768, 1024]  # height width
+    img_raw_size = 768, 1024  # height width
     fn_col = 'image_name'
     label_cols = 'MOS_zscore', # or 'MOS'
+    label_types = 'MOS_zscore', # 
 
 
 class KonIQ_dist(KonIQ):  # KonIQ10k with distributions

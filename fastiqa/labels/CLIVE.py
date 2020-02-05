@@ -18,5 +18,5 @@ https://live.ece.utexas.edu/research/ChallengeDB/
 
 class CLIVE(IqaLabel):
     path = '!data/CLIVE'
-    img_raw_size = [500, 500]
+    img_raw_size = 500, 500
     folder = 'Images'

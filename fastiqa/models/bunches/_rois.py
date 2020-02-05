@@ -99,17 +99,8 @@ class Rois0123(Im2MOS):
     data_cls = ImageRoisList
     def get_list(self):
         # cont_names = ['zero', 'zero', *self.size_cols]  # 'top', 'left', 'left', 'right'
-        df = self.df
-        if 'zero' in self.rois_cols:
-            df['zero'] = 0
-
-        img_list = ImageList.from_df(df, path=self.path, cols=self.fn_col, folder=self.folder)
-        if self.size_cols[0] not in df.columns:
-            df[self.size_cols[0]] = self.img_raw_size[0]
-        if self.size_cols[1] not in df.columns:
-            df[self.size_cols[1]] = self.img_raw_size[1]
-
-        roi_list = FloatList.from_df(df, path=self.path, cols=self.rois_cols)
+        img_list = ImageList.from_df(self.df, path=self.path, cols=self.fn_col, folder=self.folder)
+        roi_list = FloatList.from_df(self.df, path=self.path, cols=self.rois_cols)
         return self.data_cls([img_list, roi_list], self.path, inner_df=img_list.inner_df)
 
     def get_augment(self, data):

@@ -90,6 +90,16 @@ class IqaLabel:
     @cached_property
     def df(self):
         df = pd.read_csv(self.path / self.csv_labels)
+
+        # be compatitble with Rois0123
+        if 'zero' in self.rois_cols:
+            df['zero'] = df['left'] = df['top'] = 0
+        if self.img_raw_size is not None:
+            if self.size_cols[0] not in df.columns:
+                df['bottom'] = df[self.size_cols[0]] = self.img_raw_size[0]
+            if self.size_cols[1] not in df.columns:
+                df['right'] = df[self.size_cols[1]] = self.img_raw_size[1]
+
         if self.img_size is not None:
             df = df[(df[self.size_cols[0]] == self.img_size[0]) &
                     (df[self.size_cols[1]] == self.img_size[1])].reset_index()

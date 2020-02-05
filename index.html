@@ -58,21 +58,21 @@
           <div class="authoremail email" style="line-adjust:0">
             {zqying, haoranniu, praful gupta}@utexas.edu, {dhruvm, deeptigp}@fb.com, bovik@ece.utexas.edu
           </div>
-          <br/>
         </div>
 
-        <a href="https://github.com/baidut/PaQ-2-PiQ">
-          <p class="h4 h4-responsive pt-5 pb-2 text-center">
-          <i class="fa fa-github "></i>
-           Souce code available
-          </p>
-        </a>
-
-
+        <div class="wow zoomIn">
+          <a href="https://github.com/baidut/PaQ-2-PiQ">
+            <p class="h4 h4-responsive pt-5 pb-2 text-center">
+            <i class="fa fa-github "></i>
+             Souce code available
+            </p>
+          </a>
+        </div>
       Blind or no-reference (NR) perceptual picture quality prediction is a difficult, unsolved problem of great consequence to the social and streaming media industries that impacts billions of viewers daily. Unfortunately, popular NR prediction models perform poorly on real-world distorted pictures. To advance progress on this problem, we introduce the largest (by far) subjective picture quality database, containing about 40000 real-world distorted pictures and 120000 patches, on which we collected about 4M human judgments of picture quality. Using these picture and patch quality labels, we built deep region-based architectures that learn to produce state-of-the-art global picture quality predictions as well as useful local picture quality maps. Our innovations include picture quality prediction architectures that produce global-to-local inferences as well as local-to-global inferences (via feedback).
     </p>
     </div>
 </section>
+
 
 
 <section class="py-5 grey lighten-4" id="offline-demo">
@@ -126,25 +126,29 @@
       <div class="wow fadeInUp">
         <form method="post" action="" enctype="multipart/form-data"
                 id="myform">
-        <label>
           <h2 class="h1 h1-responsive pt-5 pb-2 text-center">
            <i class="fa fa-cloud-upload ">  <!-- fa-5x  -->
-              <input type='file' id="imgInp" style="display:none" />
             </i>
             Upload Your Image
           </h2>
-        </label>
         </form>
         
-        <p>Under construction. Please ignore the current results. Coming soon :) </p>
+        <p>Hover your mouse to see the quality map :) </p>
+        <p>(Not available for accessing outside of UT campus. Coming soon!)</p>
       </div>
-      <input type="file" class="filepond" id='filepond'>
-
-        <div id='image-with-heatmap'>
-          <img id='imtest' src='#'></img>
+      <input type="file" class="filepond" id='filepond' />
+      <div id='image-with-heatmap'>
+          <img id='imtest' src=''></img>
           <div id="heatmap"></div>
       </div>
       <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
+
+          <div id='image-with-heatmap'>
+          <br/><br/>
+              <h2> Predicted Quality Score: 
+                <text id='score'>?</text> out of 100
+              </h2>
+          </div>
     </div>
   </div>
 </section>
@@ -248,12 +252,12 @@
         }
       }
 
-      function draw_heatmap(height, width) {
-        var mat = [[51.783745, 47.53495 , 51.692028, 51.02082 , 49.804256],
-       [67.91715 , 64.76189 , 73.93769 , 80.79623 , 66.441765],
-       [77.52105 , 80.15939 , 75.50788 , 74.21228 , 73.43838 ],
-       [62.582222, 76.745316, 76.18615 , 70.62961 , 70.1612  ],
-       [62.937466, 73.12994 , 74.427986, 70.09519 , 68.26739 ]]
+      function draw_heatmap(mat, height, width) {
+       //  var mat = [[51.783745, 47.53495 , 51.692028, 51.02082 , 49.804256],
+       // [67.91715 , 64.76189 , 73.93769 , 80.79623 , 66.441765],
+       // [77.52105 , 80.15939 , 75.50788 , 74.21228 , 73.43838 ],
+       // [62.582222, 76.745316, 76.18615 , 70.62961 , 70.1612  ],
+       // [62.937466, 73.12994 , 74.427986, 70.09519 , 68.26739 ]]
 
         var data = [
           {
@@ -295,15 +299,23 @@
 
       function img_upload_success(response) {
          console.log(response);
+         var obj = JSON.parse(response);
+         // alert(obj.global);
+         img = document.querySelector('#imtest')
+         $('#score').text(obj.global);
+         // re draw the heatmap
+         draw_heatmap(obj.local, img.height+25, img.width)
+         // to do, support multiple files
       }
       // const pond = FilePond.create(); // document.querySelector('.filepond');
       FilePond.setOptions({
           maxFiles: 1,
           server: {
               // url: 'http://localhost:8080', 
-              url: 'https://paq2piq.appspot.com',
+              url: 'http://10.157.89.130', 
+              // url: 'https://paq2piq.appspot.com',
               process: {
-                  url: '/sz',
+                  url: '/roipool_model',
                   method: 'POST',
                   withCredentials: false,
                   headers: {},
@@ -336,8 +348,6 @@
                  // alert(img.width + " " + img.height);
                  $('#image-with-heatmap').height(img.height);
                  $('#image-with-heatmap').width(img.width);
-                 // re draw the heatmap
-                 draw_heatmap(img.height+25, img.width)
               }
           });
       });

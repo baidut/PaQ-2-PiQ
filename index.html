@@ -12,7 +12,7 @@
     <link href="styles/main.css" rel="stylesheet">
     <link href="styles/photo.css" rel="stylesheet">
     <link href="styles/heatmap.css" rel="stylesheet">
-    
+
     <!-- Filepond stylesheet -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
   </head>
@@ -37,7 +37,7 @@
           </div>
         </div>
       </nav>
-      
+
 <section class="py-5 special-color-dark text-white" id="about">
   <div class="container">
     <div class="wow fadeIn">
@@ -45,12 +45,12 @@
       <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
         <div align = "center">
           <div class="authorname" style="font-size:large;line-adjust:0">
-            Zhenqiang Ying<sup>1*</sup>, 
-            Haoran Niu<sup>1*</sup>, 
-            Praful Gupta<sup>1</sup>, 
-            Dhruv Mahajan<sup>2</sup>, 
-            Deepti Ghadiyaram<sup>2+</sup>, 
-            Alan Bovik<sup>1+</sup>, 
+            Zhenqiang Ying<sup>1*</sup>,
+            Haoran Niu<sup>1*</sup>,
+            Praful Gupta<sup>1</sup>,
+            Dhruv Mahajan<sup>2</sup>,
+            Deepti Ghadiyaram<sup>2+</sup>,
+            Alan Bovik<sup>1+</sup>,
           </div>
           <div class="authoraddress" style="line-adjust:0">
             <sup>1</sup>University of Texas at Austin,
@@ -86,13 +86,13 @@
 
 
 <!-- Photo Grid -->
-<div class="row"> 
+<div class="row">
   <div class="column wow fadeInLeft">
     <img class="toggle" src="demo/out_of_focus0470_raw.jpg" style="width:100%">
     <img class="toggle" src="demo/6862937532_raw.jpg" style="width:100%">
     <!-- <img class="toggle" src="demo/4462477090_raw.jpg" style="width:100%"> -->
     <!-- <img class="toggle" src="demo/56_raw.jpg" style="width:100%"> -->
-  </div>  
+  </div>
   <div class="column wow fadeInLeft">
     <img class="toggle" src="demo/2017266_raw.jpg" style="width:100%">
 <!--     <img class="toggle" src="demo/4582906874_raw.jpg" style="width:100%">
@@ -132,9 +132,8 @@
             Upload Your Image
           </h2>
         </form>
-        
-        <p>Hover your mouse to see the quality map :) </p>
-        <p>(Not available for accessing outside of UT campus. Coming soon!)</p>
+
+        <p>Hover your mouse to see the quality map and local quality predictions :) </p>
       </div>
       <input type="file" class="filepond" id='filepond' />
       <div id='image-with-heatmap'>
@@ -145,7 +144,7 @@
 
           <div id='image-with-heatmap'>
           <br/><br/>
-              <h2> Predicted Quality Score: 
+              <h2> Predicted Quality Score:
                 <text id='score'>?</text> out of 100
               </h2>
           </div>
@@ -171,7 +170,7 @@
         <br/>
 
       </div>
-      
+
       <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
     </div>
   </div>
@@ -198,9 +197,9 @@
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/mdb.min.js"></script>
-    
 
-    
+
+
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script src="scripts/plotly-latest.min.js"></script>
 
@@ -228,7 +227,7 @@
       function hide_image(){
         $('#imgUploaded').fadeTo(500, 0.2)
       }
-      
+
       // credit: https://stackoverflow.com/a/58897088/5181908
       function readURL(input) {
         if (input.files && input.files[0]) {
@@ -236,7 +235,7 @@
           img.src = window.URL.createObjectURL(input.files[0])
           img.onload = () => {
              // alert(img.width + " " + img.height);
-             
+
              $('#image-with-heatmap').height(img.height);
              $('#image-with-heatmap').width(img.width);
 
@@ -302,7 +301,7 @@
          var obj = JSON.parse(response);
          // alert(obj.global);
          img = document.querySelector('#imtest')
-         $('#score').text(obj.global);
+         $('#score').text(obj.result);
          // re draw the heatmap
          draw_heatmap(obj.local, img.height+25, img.width)
          // to do, support multiple files
@@ -311,19 +310,20 @@
       FilePond.setOptions({
           maxFiles: 1,
           server: {
-              // url: 'http://localhost:8080', 
-              url: 'https://10.157.89.130', 
+              // url: 'http://localhost:8080',
+              // url: 'https://10.157.89.130',
               // https gives ERR_CONNECTION_REFUSED
-              // url: 'https://paq2piq.appspot.com',
+              url: 'https://paq2piq.appspot.com',
               process: {
-                  url: '/roipool_model', // roipool_model  sz
+                  url: '/filepond', // roipool_model  sz
                   method: 'POST',
                   withCredentials: false,
+                  crossDomain: true,
                   headers: {},
                   timeout: 7000,
                   onload: img_upload_success,
                   onerror: null,
-                  ondata: null, 
+                  ondata: null,
               }
           }
       });

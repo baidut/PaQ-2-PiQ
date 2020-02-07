@@ -136,13 +136,13 @@
         <p>Hover your mouse to see the quality map and local quality predictions :) </p>
       </div>
       <input type="file" class="filepond" id='filepond' />
-      <div id='image-with-heatmap' class="column">
+      <div id='image-with-heatmap'>
           <img id='imtest' src='' style="width:100%"></img>
           <div id="heatmap" style="width:100%"></div>
       </div>
       <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
 
-          <div id='image-with-heatmap'>
+          <div>
           <br/><br/>
               <h2> Predicted Quality Score:
                 <text id='score'>?</text> out of 100
@@ -204,6 +204,8 @@
     <script src="scripts/plotly-latest.min.js"></script>
 
     <script type="text/javascript">
+// https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
+
 
 
 
@@ -222,10 +224,10 @@
         $('#imtest').fadeTo(500, 1)
       }
       function show_image(){
-        $('#imgUploaded').fadeTo(500, 1)
+        $('#imtest').fadeTo(500, 1)
       }
       function hide_image(){
-        $('#imgUploaded').fadeTo(500, 0.2)
+        $('#imtest').fadeTo(500, 0.2)
       }
 
       // credit: https://stackoverflow.com/a/58897088/5181908
@@ -354,11 +356,39 @@
       });
 
       $(document).ready(function(){
-        $('.toggle').hover(toggle_heatmap, toggle_image);
-        // mobile user
-        $('.toggle').bind('touchstart', toggle_heatmap).bind('touchend', toggle_image)
-        $('#image-with-heatmap').hover(show_heatmap, hide_heatmap);
+        var isMobile = {
+           Android: function() {
+               return navigator.userAgent.match(/Android/i);
+           },
+           BlackBerry: function() {
+               return navigator.userAgent.match(/BlackBerry/i);
+           },
+           iOS: function() {
+               return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+           },
+           Opera: function() {
+               return navigator.userAgent.match(/Opera Mini/i);
+           },
+           Windows: function() {
+               return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+           },
+           any: function() {
+               return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+           }
+        };
+
         // $("#imgUploaded").hover(hide_image, show_image);
+        if( isMobile.any() ) {
+          // mobile user
+          $('.toggle').bind('touchstart', toggle_heatmap).bind('touchend', toggle_image)
+          $('#imtest').fadeTo(500, 0.2)
+          // $('#image-with-heatmap').hover(hide_heatmap, show_heatmap);
+          $('#image-with-heatmap').addClass("column");
+        }
+        else {
+          $('.toggle').hover(toggle_heatmap, toggle_image);
+          $('#image-with-heatmap').hover(show_heatmap, hide_heatmap);
+        }
 
       });
     </script>

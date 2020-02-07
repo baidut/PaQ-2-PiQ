@@ -12,6 +12,7 @@
     <link href="styles/main.css" rel="stylesheet">
     <link href="styles/photo.css" rel="stylesheet">
     <link href="styles/heatmap.css" rel="stylesheet">
+    <link href="styles/switch.css" rel="stylesheet">
 
     <!-- Filepond stylesheet -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
@@ -33,7 +34,7 @@
               <!-- <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
               <li class="nav-item"><a class="nav-link" href="#client">Client</a></li>
               <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
-            </ul><a class="btn btn-default btn-rounded my-0" href="#">Download</a>
+            </ul><a class="btn btn-default btn-rounded my-0" href="#download-database">Download</a>
           </div>
         </div>
       </nav>
@@ -60,13 +61,16 @@
           </div>
         </div>
 
-        <div class="wow zoomIn">
-          <a href="https://github.com/baidut/PaQ-2-PiQ">
-            <p class="h4 h4-responsive pt-5 pb-2 text-center">
+        <div class="wow zoomIn text-center">
+
+            <!-- <p class="h4 h4-responsive pt-5 pb-2 text-center"> -->
+            <br/>
+            <a href="https://github.com/baidut/PaQ-2-PiQ" class="btn btn-secondary">
             <i class="fa fa-github "></i>
              Souce code available
-            </p>
-          </a>
+             </a>
+             <br/><br/>
+          <!-- </p> -->
         </div>
       Blind or no-reference (NR) perceptual picture quality prediction is a difficult, unsolved problem of great consequence to the social and streaming media industries that impacts billions of viewers daily. Unfortunately, popular NR prediction models perform poorly on real-world distorted pictures. To advance progress on this problem, we introduce the largest (by far) subjective picture quality database, containing about 40000 real-world distorted pictures and 120000 patches, on which we collected about 4M human judgments of picture quality. Using these picture and patch quality labels, we built deep region-based architectures that learn to produce state-of-the-art global picture quality predictions as well as useful local picture quality maps. Our innovations include picture quality prediction architectures that produce global-to-local inferences as well as local-to-global inferences (via feedback).
     </p>
@@ -88,33 +92,33 @@
 <!-- Photo Grid -->
 <div class="row">
   <div class="column wow fadeInLeft">
-    <img class="toggle" src="demo/out_of_focus0470_raw.jpg" style="width:100%">
-    <img class="toggle" src="demo/6862937532_raw.jpg" style="width:100%">
-    <!-- <img class="toggle" src="demo/4462477090_raw.jpg" style="width:100%"> -->
-    <!-- <img class="toggle" src="demo/56_raw.jpg" style="width:100%"> -->
+    <img class="hovertoggle" src="demo/out_of_focus0470_raw.jpg" style="width:100%">
+    <img class="hovertoggle" src="demo/6862937532_raw.jpg" style="width:100%">
+    <!-- <img class="hovertoggle" src="demo/4462477090_raw.jpg" style="width:100%"> -->
+    <!-- <img class="hovertoggle" src="demo/56_raw.jpg" style="width:100%"> -->
   </div>
   <div class="column wow fadeInLeft">
-    <img class="toggle" src="demo/2017266_raw.jpg" style="width:100%">
-<!--     <img class="toggle" src="demo/4582906874_raw.jpg" style="width:100%">
-    <img class="toggle" src="demo/6596306_raw.jpg" style="width:100%">
-    <img class="toggle" src="demo/4841257153_raw.jpg" style="width:100%"> -->
-    <!-- <img class="toggle" src="demo/4491574274_raw.jpg" style="width:100%"> -->
-    <!-- <img class="toggle" src="demo/6537150655_raw.jpg" style="width:100%"> -->
-    <!-- <img class="toggle" src="demo/7384140824_raw.jpg" style="width:100%"> -->
-    <!-- <img class="toggle" src="demo/5005558786_raw.jpg" style="width:100%"> -->
-    <!-- <img class="toggle" src="demo/299519765_raw.jpg" style="width:100%"> -->
-    <img class="toggle" src="demo/motion0160_raw.jpg" style="width:100%">
-    <img class="toggle" src="demo/motion0089_raw.jpg" style="width:100%">
+    <img class="hovertoggle" src="demo/2017266_raw.jpg" style="width:100%">
+<!--     <img class="hovertoggle" src="demo/4582906874_raw.jpg" style="width:100%">
+    <img class="hovertoggle" src="demo/6596306_raw.jpg" style="width:100%">
+    <img class="hovertoggle" src="demo/4841257153_raw.jpg" style="width:100%"> -->
+    <!-- <img class="hovertoggle" src="demo/4491574274_raw.jpg" style="width:100%"> -->
+    <!-- <img class="hovertoggle" src="demo/6537150655_raw.jpg" style="width:100%"> -->
+    <!-- <img class="hovertoggle" src="demo/7384140824_raw.jpg" style="width:100%"> -->
+    <!-- <img class="hovertoggle" src="demo/5005558786_raw.jpg" style="width:100%"> -->
+    <!-- <img class="hovertoggle" src="demo/299519765_raw.jpg" style="width:100%"> -->
+    <img class="hovertoggle" src="demo/motion0160_raw.jpg" style="width:100%">
+    <img class="hovertoggle" src="demo/motion0089_raw.jpg" style="width:100%">
   </div>
   <div class="column wow fadeInRight">
-    <img class="toggle" src="demo/out_of_focus0385_raw.jpg" style="width:100%">
-    <img class="toggle" src="demo/out_of_focus0161_raw.jpg" style="width:100%">
-    <img class="toggle" src="demo/out_of_focus0083_raw.jpg" style="width:100%">
+    <img class="hovertoggle" src="demo/out_of_focus0385_raw.jpg" style="width:100%">
+    <img class="hovertoggle" src="demo/out_of_focus0161_raw.jpg" style="width:100%">
+    <img class="hovertoggle" src="demo/out_of_focus0083_raw.jpg" style="width:100%">
   </div>
   <div class="column wow fadeInRight">
-    <img class="toggle" src="demo/motion0022_raw.jpg" style="width:100%">
-    <img class="toggle" src="demo/motion0072_raw.jpg" style="width:100%">
-    <!-- <img class="toggle" src="demo/4904294830_raw.jpg" style="width:100%"> -->
+    <img class="hovertoggle" src="demo/motion0022_raw.jpg" style="width:100%">
+    <img class="hovertoggle" src="demo/motion0072_raw.jpg" style="width:100%">
+    <!-- <img class="hovertoggle" src="demo/4904294830_raw.jpg" style="width:100%"> -->
   </div>
 </div>
 </section>
@@ -133,20 +137,41 @@
           </h2>
         </form>
 
-        <p>Hover your mouse to see the quality map and local quality predictions :) </p>
+        <!-- <p>Hover your mouse to see the quality map and local quality predictions :) </p> -->
       </div>
       <input type="file" class="filepond" id='filepond' />
+
+      <div class="progress" style="height: 50px;">
+        <div id='score' class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+
       <div id='image-with-heatmap'>
           <img id='imtest' src='' style="width:100%"></img>
           <div id="heatmap" style="width:100%"></div>
       </div>
       <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
 
-          <div>
-          <br/><br/>
-              <h2> Predicted Quality Score:
-                <text id='score'>?</text> out of 100
-              </h2>
+      <br><br/>
+
+          <!-- Rounded switch -->
+          <label class="switch">
+            <input type="checkbox" checked id='check_contrast_stretch'>
+            <span class="slider round"></span>
+          </label>
+          <p>Contrast Stretch
+
+          <br/>
+
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary" id='btn_im_only'
+              data-toggle="tooltip" title="Show image only" >
+              Image</button>
+            <button type="button" class="btn btn-secondary active" id='btn_im_map'
+             data-toggle="tooltip" title="Show both image and heatmap" >
+              Both</button>
+            <button type="button" class="btn btn-secondary" id='btn_map_only'
+              data-toggle="tooltip" title="Show heatmap only" >
+              Heatmap</button>
           </div>
     </div>
   </div>
@@ -223,12 +248,6 @@
         $('#heatmap').hide();
         $('#imtest').fadeTo(500, 1)
       }
-      function show_image(){
-        $('#imtest').fadeTo(500, 1)
-      }
-      function hide_image(){
-        $('#imtest').fadeTo(500, 0.2)
-      }
 
       // credit: https://stackoverflow.com/a/58897088/5181908
       function readURL(input) {
@@ -253,21 +272,46 @@
         }
       }
 
-      function draw_heatmap(mat, height, width) {
-       //  var mat = [[51.783745, 47.53495 , 51.692028, 51.02082 , 49.804256],
-       // [67.91715 , 64.76189 , 73.93769 , 80.79623 , 66.441765],
-       // [77.52105 , 80.15939 , 75.50788 , 74.21228 , 73.43838 ],
-       // [62.582222, 76.745316, 76.18615 , 70.62961 , 70.1612  ],
-       // [62.937466, 73.12994 , 74.427986, 70.09519 , 68.26739 ]]
+      var mat = [[51.783745, 47.53495 , 51.692028, 51.02082 , 49.804256],
+      [67.91715 , 64.76189 , 73.93769 , 80.79623 , 66.441765],
+      [77.52105 , 80.15939 , 75.50788 , 74.21228 , 73.43838 ],
+      [62.582222, 76.745316, 76.18615 , 70.62961 , 70.1612  ],
+      [62.937466, 73.12994 , 74.427986, 70.09519 , 68.26739 ]]
 
-        var data = [
-          {
-            z: mat.reverse(),
-            type: 'heatmap',
-            opacity: 0.8,
-            showscale: false
-          }
-        ];
+      function draw_heatmap() {
+        var data;
+       // https://plot.ly/javascript/colorscales/
+       //$('#imtest').height()  document.querySelector('#imtest').height
+       img = document.querySelector('#imtest')
+       height = img.height+25;
+       width = img.width;
+       absolute_value = document.querySelector('#check_contrast_stretch').checked;
+
+       // https://stackoverflow.com/questions/30610523/reverse-array-in-javascript-without-mutating-original-array
+       rev_mat = mat.slice().reverse();
+
+        if(absolute_value){
+          data = [
+            {
+              z: rev_mat,
+              type: 'heatmap',
+              opacity: 0.8,
+              showscale: false
+            }
+          ];
+        }
+        else {
+          data = [
+            {
+              z: rev_mat,
+              zmin: 40,
+              zmax: 100,
+              type: 'heatmap',
+              opacity: 0.8,
+              showscale: false
+            }
+          ];
+        }
 
         var layout = {
           height: height,
@@ -302,10 +346,12 @@
          console.log(response);
          var obj = JSON.parse(response);
          // alert(obj.global);
-         img = document.querySelector('#imtest')
-         $('#score').text(obj.result);
+         // $('#score').text(obj.result);
+         $('#score').width(obj.result+'%').attr('aria-valuenow', obj.result+'%');
+         $('#score').text('Predicted Quality Score: ' + obj.result);
          // re draw the heatmap
-         draw_heatmap(obj.local, img.height+25, img.width)
+         mat = obj.local;
+         draw_heatmap();
          // to do, support multiple files
       }
       // const pond = FilePond.create(); // document.querySelector('.filepond');
@@ -340,10 +386,10 @@
                   console.log('Oh no');
                   return;
               }
-              console.log('File added', file);
+              //console.log('File added', file);
               f = window.URL.createObjectURL(pond.getFile().file)
-              console.log(pond.getFile().file)
-              console.log(f)
+              //console.log(pond.getFile().file)
+              //console.log(f)
               // let img = new Image()
               img = document.querySelector('#imtest');
               img.src = f
@@ -380,16 +426,25 @@
         // $("#imgUploaded").hover(hide_image, show_image);
         if( isMobile.any() ) {
           // mobile user
-          $('.toggle').bind('touchstart', toggle_heatmap).bind('touchend', toggle_image)
-          $('#imtest').fadeTo(500, 0.2)
+          $('.hovertoggle').bind('touchstart', toggle_heatmap).bind('touchend', toggle_image)
           // $('#image-with-heatmap').hover(hide_heatmap, show_heatmap);
           $('#image-with-heatmap').addClass("column");
         }
         else {
-          $('.toggle').hover(toggle_heatmap, toggle_image);
-          $('#image-with-heatmap').hover(show_heatmap, hide_heatmap);
+          $('.hovertoggle').hover(toggle_heatmap, toggle_image);
+          // $('#image-with-heatmap').hover(show_heatmap, hide_heatmap);
         }
-
+        $('#imtest').fadeTo(1000, 0.2);
+        $('#btn_im_only').click(function(){ $('#imtest').css('opacity', '1'); $('#heatmap').hide();  }); // $('#imtest').fadeTo(1, 1);
+        $('#btn_im_map').click(function(){ $('#heatmap').show(); $('#imtest').css('opacity', '0.2')  }); // $('#imtest').fadeTo(1000, 0.2);
+        $('#btn_map_only').click(function(){ $('#heatmap').show(); $('#imtest').css('opacity', '0') });
+        $('#check_contrast_stretch').change(draw_heatmap);
+        // bootstrap button group active
+        // https://jsfiddle.net/Behseini/NsQ2a/
+        $(".btn-group > .btn").click(function(){
+            $(".btn-group > .btn").removeClass("active");
+            $(this).addClass("active");
+        });
       });
     </script>
     <!-- <script src="scripts/plotly_heatmap.js"></script> -->

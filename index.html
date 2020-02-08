@@ -13,10 +13,11 @@
     <link href="styles/photo.css" rel="stylesheet">
     <link href="styles/heatmap.css" rel="stylesheet">
     <link href="styles/switch.css" rel="stylesheet">
+    <link href="styles/social_bar.css" rel="stylesheet">
 
     <!-- Filepond stylesheet -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-    
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-STXPXN06N9"></script>
     <script>
@@ -87,8 +88,6 @@
     </div>
 </section>
 
-
-
 <section class="py-5 grey lighten-4" id="offline-demo">
   <div class="container">
     <div class="wow fadeInUp">
@@ -136,63 +135,110 @@
 <section class="text-center" id="upload-image">
   <div>
     <div class="container my-5">
-
       <div class="wow fadeInUp">
-        <form method="post" action="" enctype="multipart/form-data"
-                id="myform">
-          <h2 class="h1 h1-responsive pt-5 pb-2 text-center">
-           <i class="fa fa-cloud-upload ">  <!-- fa-5x  -->
-            </i>
-            Upload Your Image
-          </h2>
-        </form>
-
-        <!-- <p>Hover your mouse to see the quality map and local quality predictions :) </p> -->
-      </div>
-      <input type="file" class="filepond" id='filepond' />
-
-      <div class="progress" style="height: 50px;">
-        <div id='score' class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        <h2 class="h1 h1-responsive text-center my-5">Try it online :)</h2>
+        <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
+          Powered by <a href="https://cloud.google.com/appengine">Google App Engine</a>
+        </p>
       </div>
 
-      <div id='image-with-heatmap'>
-          <img id='imtest' src='' style="width:100%"></img>
-          <div id="heatmap" style="width:100%"></div>
-      </div>
-      <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
+      <div class="row">
 
-      <br><br/>
-
-          <!-- Rounded switch -->
-          <label class="switch">
-            <input type="checkbox" checked id='check_contrast_stretch'>
-            <span class="slider round"></span>
-          </label>
-          <p>Contrast Stretch
-
+        <div class="doublecolumn" style="text-align:center ">
           <br/>
 
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary" id='btn_im_only'
-              data-toggle="tooltip" title="Show image only" >
-              Image</button>
-            <button type="button" class="btn btn-secondary active" id='btn_im_map'
-             data-toggle="tooltip" title="Show both image and heatmap" >
-              Both</button>
-            <button type="button" class="btn btn-secondary" id='btn_map_only'
-              data-toggle="tooltip" title="Show heatmap only" >
-              Heatmap</button>
+          <input type="file" class="filepond" style="height: 500" id='filepond' />
+
+          <!-- <div class="alert alert-primary" role="alert">
+            Step 1: upload your file:
+          </div> -->
+          <div class="alert alert-light" role="alert">
+            Local score histogram and global score:
+
+            <br/><br/>
+
+            <div id='qualityHist' style="width:100%"></div>
+
+            <br/>
+
+            <div class="progress" style="display: inline-block; height: 20px; width: 80%" >
+              <div id='score' class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
           </div>
+
+          <div class="alert alert-light" role="alert">
+            Display settings:
+            <br/><br/>
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary" id='btn_im_only'
+                data-toggle="tooltip" title="Show image only" >
+                Image</button>
+              <button type="button" class="btn btn-secondary active" id='btn_im_map'
+               data-toggle="tooltip" title="Show both image and heatmap" >
+                Both</button>
+              <button type="button" class="btn btn-secondary" id='btn_map_only'
+                data-toggle="tooltip" title="Show heatmap only" >
+                Heatmap</button>
+            </div>
+
+            <br/><br/>
+            <!-- Rounded switch -->
+            <label class="switch">
+              <input type="checkbox" id='check_contrast_stretch' checked>
+              <span class="slider round"></span>
+            </label>
+            <p data-toggle="tooltip"  title="Use relative values to better view the heatmap"> Contrast Stretch </p>
+            <!-- <span >?</span> -->
+
+          </div>
+
+        </div>
+
+
+        <div id='image-with-heatmap' class="doublecolumn">
+            <img id='imtest' src='demo/NoisyLady.png' style="width: 100%"></img>
+            <div id="heatmap" style="width: 100%"></div>
+            <!-- style="width: 100%" -->
+        </div>
+        <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
+
+        <br><br/>
+
+
+      </div>
     </div>
   </div>
 </section>
+
+
+<!-- <section class="py-5 grey lighten-4" id="offline-demo">
+  <div class="container">
+    <div class="wow fadeInUp">
+      <h2 class="h1 h1-responsive text-center my-5">Spread the news</h2>
+      <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
+
+      </p>
+    </div>
+
+    <div class="icon-bar" style="text-align: center">
+      <a href="https://www.facebook.com/" class="facebook"><i class="social fa fa-facebook"></i></a>
+      <a href="https://twitter.com/" class="twitter"><i class="social fa fa-twitter"></i></a>
+      <a href="#" class="google"><i class="social fa fa-google"></i></a>
+      <a href="#" class="linkedin"><i class="social fa fa-linkedin"></i></a>
+      <a href="#" class="youtube"><i class="social fa fa-youtube"></i></a>
+    </div>
+
+    </div>
+</section> -->
+
 
 <section class="text-center special-color-dark text-white" id="download-database">
   <!-- style="background: url('img/app-download.jpg');" -->
   <div class="rgba-teal-light py-5">
     <div class="container my-5">
 
-            <div class="wow fadeInDown">
+      <div class="wow fadeInDown">
         <h2 class="h1 h1-responsive pt-5 pb-2 text-center">
           <i class="fa fa-cloud-download "></i>
           Download the database
@@ -203,8 +249,8 @@
 
       <div class="wow fadeInUp">
         <br/>
-
       </div>
+
 
       <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
     </div>
@@ -221,243 +267,24 @@
         </div>
         <div class="container-fluid text-center">
           <!-- <p class="mb-0">&copy; <a href="/">Material App</a>  -->
-            - Design: <a href="https://templateflip.com/" target="_blank">TemplateFlip</a></p>
+            - Copyright &copy; 2020. <a href="https://live.ece.utexas.edu/" target="_blank">Laboratory for Image & Video Engineering</a>
+            <br>
+            - Design: <a href="https://templateflip.com/" target="_blank">TemplateFlip</a>
+          <!-- </p> -->
         </div>
       </div>
     </footer>
-
 
     <!-- include jQuery library -->
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/mdb.min.js"></script>
-
-
+    <script>new WOW().init();</script>
 
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-    <script src="scripts/plotly-latest.min.js"></script>
-
-    <script type="text/javascript">
-// https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
-
-
-
-
-      function toggle_heatmap() {
-        $(this).attr('src', $(this).attr('src').replace("_raw.jpg", "_map.jpg"));
-      }
-      function toggle_image() {
-        $(this).attr('src', $(this).attr('src').replace("_map.jpg", "_raw.jpg"));
-      }
-      function show_heatmap(){
-        $('#heatmap').show();
-        $('#imtest').fadeTo(500, 0.2)
-      }
-      function hide_heatmap(){
-        $('#heatmap').hide();
-        $('#imtest').fadeTo(500, 1)
-      }
-
-      // credit: https://stackoverflow.com/a/58897088/5181908
-      function readURL(input) {
-        if (input.files && input.files[0]) {
-          let img = new Image()
-          img.src = window.URL.createObjectURL(input.files[0])
-          img.onload = () => {
-             // alert(img.width + " " + img.height);
-
-             $('#image-with-heatmap').height(img.height);
-             $('#image-with-heatmap').width(img.width);
-
-             // re draw the heatmap
-             return img
-          }
-          // // credit: https://stackoverflow.com/a/4459419/5181908
-          // var reader = new FileReader();
-          // reader.onload = function(e) {
-          //   $('#imtest').attr('src', e.target.result);
-          // }
-          // reader.readAsDataURL(input.files[0]);
-        }
-      }
-
-      var mat = [[51.783745, 47.53495 , 51.692028, 51.02082 , 49.804256],
-      [67.91715 , 64.76189 , 73.93769 , 80.79623 , 66.441765],
-      [77.52105 , 80.15939 , 75.50788 , 74.21228 , 73.43838 ],
-      [62.582222, 76.745316, 76.18615 , 70.62961 , 70.1612  ],
-      [62.937466, 73.12994 , 74.427986, 70.09519 , 68.26739 ]]
-
-      function draw_heatmap() {
-        var data;
-       // https://plot.ly/javascript/colorscales/
-       //$('#imtest').height()  document.querySelector('#imtest').height
-       img = document.querySelector('#imtest')
-       height = img.height+25;
-       width = img.width;
-       absolute_value = document.querySelector('#check_contrast_stretch').checked;
-
-       // https://stackoverflow.com/questions/30610523/reverse-array-in-javascript-without-mutating-original-array
-       rev_mat = mat.slice().reverse();
-
-        if(absolute_value){
-          data = [
-            {
-              z: rev_mat,
-              type: 'heatmap',
-              opacity: 0.8,
-              showscale: false
-            }
-          ];
-        }
-        else {
-          data = [
-            {
-              z: rev_mat,
-              zmin: 40,
-              zmax: 100,
-              type: 'heatmap',
-              opacity: 0.8,
-              showscale: false
-            }
-          ];
-        }
-
-        var layout = {
-          height: height,
-          width: width,
-          autosize: true,
-          margin: {
-            l: 0,
-            r: 0,
-            b: 0,
-            t: 25, // tooltip bar
-            pad: 0
-          },
-          xaxis: {
-            showgrid: false,
-            zeroline: false,
-            showline: false,
-            ticks: '',
-            showticklabels: false
-          },
-          yaxis: {
-            showgrid: false,
-            zeroline: false,
-            showline: false,
-            ticks: '',
-            showticklabels: false
-          },
-        };
-        Plotly.newPlot('heatmap', data, layout);
-      }
-
-      function img_upload_success(response) {
-         console.log(response);
-         var obj = JSON.parse(response);
-         // alert(obj.global);
-         // $('#score').text(obj.result);
-         $('#score').width(obj.result+'%').attr('aria-valuenow', obj.result+'%');
-         $('#score').text('Predicted Quality Score: ' + obj.result);
-         // re draw the heatmap
-         mat = obj.local;
-         draw_heatmap();
-         // to do, support multiple files
-      }
-      // const pond = FilePond.create(); // document.querySelector('.filepond');
-      FilePond.setOptions({
-          maxFiles: 1,
-          server: {
-              // url: 'http://localhost:8080',
-              // url: 'https://10.157.89.130',
-              // https gives ERR_CONNECTION_REFUSED
-              url: 'https://paq2piq.appspot.com',
-              process: {
-                  url: '/filepond', // roipool_model  sz
-                  method: 'POST',
-                  withCredentials: false,
-                  crossDomain: true,
-                  headers: {},
-                  timeout: 7000,
-                  onload: img_upload_success,
-                  onerror: null,
-                  ondata: null,
-              }
-          }
-      });
-      FilePond.parse(document.body);
-      document.addEventListener('FilePond:loaded', e => {
-          console.log('FilePond ready for use', e.detail);
-          const inputElement = document.querySelector('#filepond');
-          const pond = FilePond.create( inputElement );
-
-          pond.on('addfile', (error, file) => {
-              if (error) {
-                  console.log('Oh no');
-                  return;
-              }
-              //console.log('File added', file);
-              f = window.URL.createObjectURL(pond.getFile().file)
-              //console.log(pond.getFile().file)
-              //console.log(f)
-              // let img = new Image()
-              img = document.querySelector('#imtest');
-              img.src = f
-              img.onload = () => {
-                 // alert(img.width + " " + img.height);
-                 $('#image-with-heatmap').height(img.height);
-                 $('#image-with-heatmap').width(img.width);
-              }
-          });
-      });
-
-      $(document).ready(function(){
-        var isMobile = {
-           Android: function() {
-               return navigator.userAgent.match(/Android/i);
-           },
-           BlackBerry: function() {
-               return navigator.userAgent.match(/BlackBerry/i);
-           },
-           iOS: function() {
-               return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-           },
-           Opera: function() {
-               return navigator.userAgent.match(/Opera Mini/i);
-           },
-           Windows: function() {
-               return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-           },
-           any: function() {
-               return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-           }
-        };
-
-        // $("#imgUploaded").hover(hide_image, show_image);
-        if( isMobile.any() ) {
-          // mobile user
-          $('.hovertoggle').bind('touchstart', toggle_heatmap).bind('touchend', toggle_image)
-          // $('#image-with-heatmap').hover(hide_heatmap, show_heatmap);
-          $('#image-with-heatmap').addClass("column");
-        }
-        else {
-          $('.hovertoggle').hover(toggle_heatmap, toggle_image);
-          // $('#image-with-heatmap').hover(show_heatmap, hide_heatmap);
-        }
-        $('#imtest').fadeTo(1000, 0.2);
-        $('#btn_im_only').click(function(){ $('#imtest').css('opacity', '1'); $('#heatmap').hide();  }); // $('#imtest').fadeTo(1, 1);
-        $('#btn_im_map').click(function(){ $('#heatmap').show(); $('#imtest').css('opacity', '0.2')  }); // $('#imtest').fadeTo(1000, 0.2);
-        $('#btn_map_only').click(function(){ $('#heatmap').show(); $('#imtest').css('opacity', '0') });
-        $('#check_contrast_stretch').change(draw_heatmap);
-        // bootstrap button group active
-        // https://jsfiddle.net/Behseini/NsQ2a/
-        $(".btn-group > .btn").click(function(){
-            $(".btn-group > .btn").removeClass("active");
-            $(this).addClass("active");
-        });
-      });
-    </script>
+    <script src="js/plotly-latest.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <!-- <script src="scripts/plotly_heatmap.js"></script> -->
-    <script>new WOW().init();</script>
   </body>
 </html>

@@ -6,6 +6,13 @@
   padding: 0 4px;
 }
 
+.doublecolumn {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+  max-width: 50%;
+  padding: 0 8px;
+}
+
 .column img {
   margin-top: 8px;
   vertical-align: middle;
@@ -18,6 +25,11 @@
     -ms-flex: 50%;
     flex: 50%;
     max-width: 50%;
+  }
+  .doublecolumn {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
   }
 }
 

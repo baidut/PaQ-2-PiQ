@@ -29,7 +29,7 @@ Code for our paper ["*From Patches to Pictures (PaQ-2-PiQ): Mapping the Perceptu
 ## Setup
 
 * python 3.6/3.7 `python --version`
-* install prerequisites by `pip install requirements.txt`
+* install prerequisites by `pip install -r requirements.txt`
 * Download the pretrained models and put them under a folder named `models`
   
   * [RoIPoolModel-fit.10.bs.120.pth](https://github.com/baidut/PaQ-2-PiQ/releases/download/v1.0/RoIPoolModel-fit.10.bs.120.pth)

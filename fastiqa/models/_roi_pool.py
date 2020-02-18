@@ -8,13 +8,18 @@ import sys, os
 
 # from .roi_layers import ROIPool, ROIAlign  # PyTorch 1.0 specific!
 
+# TODO: conditional import
 from torchvision.ops import RoIPool, RoIAlign
+# from ._ops_roi_pool import *
+
 from .bunches._rois import Rois0123
 from ._body_head import BodyHeadModel, num_features_model
 
 # from .prroi_pool import PrRoIPool2D
 from fastai.vision import *  # Tensor
-import torch.nn as nn
+
+
+
 
 
 def get_idx(batch_size, n_output, device=None):  # idx of rois
@@ -129,7 +134,7 @@ class RoIPoolModel(NoRoIPoolModel):
         super().__init__()
         self.roi_pool = self.create_roi_pool()
 
-    def input_fixed_rois(self, rois=None, img_size=None, batch_size=1, include_image=True):
+    def input_fixed_rois(self, rois=None, img_size=None, batch_size=1, include_image=True, cuda=True):
         """
 
         Note: img_size = (height, width)
@@ -150,10 +155,12 @@ class RoIPoolModel(NoRoIPoolModel):
         rois[:, 1::2] *= img_size[0]
         a = [0, 0, img_size[1], img_size[0]] if include_image else []
         a += rois.reshape(-1).tolist()  # 1 dim list
-        t = tensor(a).cuda()
+        t = tensor(a)
+        if cuda:
+            t = t.cuda()
         self.rois = t.unsqueeze(0).repeat(batch_size, 1, 1).view(batch_size, -1)
 
-    def input_block_rois(self, blk_size=None, img_size=None, batch_size=1, include_image=True):
+    def input_block_rois(self, blk_size=None, img_size=None, batch_size=1, include_image=True, cuda=True):
         # same for each item in a batch , so repeat it with batch size
         """
         blk_size = 32x32, then output  [1, (32*32+1)*4]
@@ -172,7 +179,9 @@ class RoIPoolModel(NoRoIPoolModel):
         a = [0, 0, img_size[1], img_size[0]] if include_image else []
         for sz in blk_size:
             a += get_blockwise_rois(sz, img_size)
-        t = tensor(a).cuda()
+        t = tensor(a)
+        if cuda:
+            t = t.cuda()
         self.rois = t.unsqueeze(0).repeat(batch_size, 1, 1).view(batch_size, -1)
         # self.scale_rois = (img_size == 1)
         # https://discuss.pytorch.org/t/repeat-examples-along-batch-dimension/36217/3

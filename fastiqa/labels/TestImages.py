@@ -4,6 +4,19 @@ from fastai.vision import open_image
 import os
 from PIL import Image as PIL_Image
 
+"""
+# %%
+from fastiqa.all import *
+learn = RoIPoolLearner.from_cls(FLIVE, RoIPoolModel)
+learn.path = Path('.')
+learn.load('RoIPoolModel-fit(10,bs=120)')
+learn.export('trained_model.pkl')
+
+from fastiqa.all import *; # Im2MOS(TestImages(path='/var/www/yourapplication'))
+data.df
+# %%
+"""
+
 class TestImages(IqaLabel): # Rois0123Label
     path = '.'
     img_tfm_size = None

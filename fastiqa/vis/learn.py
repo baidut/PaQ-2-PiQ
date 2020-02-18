@@ -1,4 +1,4 @@
-from .learner import *
+from ..learner import *
 
 def clickable_scatter(x, y, xlabel, ylabel, xlim, ylim, func):
     import plotly.offline as py

@@ -7,7 +7,8 @@ import pandas as pd
 """
 # %%
 %matplotlib inline
-from fastiqa.csv import *
+from fastiqa.all import *
+from fastiqa.vis import *
 
 # %% size distribution
 Vis(FLIVE).scatter('width_image', 'height_image')
@@ -17,6 +18,9 @@ Vis(FLIVE).hist()
 
 Vis(CLIVE).distplot_image_mos()
 Vis(FLIVE).distplot_image_mos()
+
+Vis(FLIVE, filter=lambda x: x.is_valid).distplot_image_mos()
+Im2MOS(FLIVE)
 
 Vis.mos_dist([CLIVE, KonIQ, FLIVE])
 Vis.mos_dist([CLIVE, KonIQ, FLIVE], figsize=[4, 2.5], rug=False)

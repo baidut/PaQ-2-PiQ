@@ -78,7 +78,8 @@ class RoIPoolLearner(IqaLearner):
             blk_size = [blk_size]
         # input_block_rois(self, blk_size=None, img_size=[1, 1], batch_size=1, include_image=True):
         # [8, 8] #  [5, 5]
-        self.model.input_block_rois(blk_size, [sample.shape[-2], sample.shape[-1]])  # self.data.img_raw_size
+        cuda = self.data.device.type == 'cuda'
+        self.model.input_block_rois(blk_size, [sample.shape[-2], sample.shape[-1]], cuda=cuda)  # self.data.img_raw_size
         # [768, 1024] [8, 8] is too big learn.data.batch_size
 
         # predict will first convert image to a batch according to learn.data

@@ -26,6 +26,10 @@ Code for our paper ["*From Patches to Pictures (PaQ-2-PiQ): Mapping the Perceptu
 }
 ```
 
+### Features
+
+* support cpu-only, just install pytorch-cpu and followed by fastai
+
 ## Setup
 
 * python 3.6/3.7 `python --version`

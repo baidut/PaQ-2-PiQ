@@ -13,7 +13,10 @@
 
 # PaQ-2-PiQ
 
-![](https://img.shields.io/badge/python-3.6 | 3.7-blue.svg) ![](https://img.shields.io/badge/pytorch-1.0-red.svg) ![](https://img.shields.io/badge/fastai-1.0.60-green.svg) 
+[![pypi fastiqa version](https://img.shields.io/pypi/v/fastiqa.svg)](https://pypi.python.org/pypi/fastiqa)
+[![fastiqa python compatibility](https://img.shields.io/pypi/pyversions/fastiqa.svg)](https://pypi.python.org/pypi/fastiqa)
+![](https://img.shields.io/badge/pytorch-1.0-red.svg) 
+![](https://img.shields.io/badge/fastai-1.0.60-green.svg) 
 
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -25,7 +28,7 @@ Code for our CVPR2020 paper ["*From Patches to Pictures (PaQ-2-PiQ): Mapping the
 
 * Linux system is recommended
 * python 3.6 or higher
-* for CPU-only usage, just install pytorch-cpu
+* for CPU-only usage, just install pytorch-cpu [detailed instruction coming soon]
 
 ### PyPI Install
 
@@ -46,21 +49,14 @@ pip install git+https://github.com/baidut/PaQ-2-PiQ.git
 ### Developer Install [Recommended]
 
 ```bash
-# install prerequisites
-pip install -r requirements.txt 
-
-# clone editable source code
-pip install git+https://github.com/baidut/PaQ-2-PiQ.git
+git clone https://github.com/baidut/PaQ-2-PiQ
+cd PaQ-2-PiQ
+pip install -r requirements.txt
 ```
 
 ## Demo
 
-![](https://www.tensorflow.org/images/colab_logo_32px.png)[Run in Google Colab](https://colab.research.google.com/drive/1uvE0rWh3cNtTjfSORpq7TJ3q-45_sIT7) 
-
-* Download the pretrained models and put them under a folder named `models`
-
-  * [RoIPoolModel-fit.10.bs.120.pth](https://github.com/baidut/PaQ-2-PiQ/releases/download/v1.0/RoIPoolModel-fit.10.bs.120.pth)
-* Open a Jupyter notebook and run `demo.ipynb` 
+see [`demo.ipynb`](demo.ipynb)
 
 ## Get Started with FastIQA :rocket: 
 

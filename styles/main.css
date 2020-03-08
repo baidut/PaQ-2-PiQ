@@ -1,3 +1,9 @@
+video {
+  width: 100%;
+  height: auto;
+}
+
+
 #intro {
   background: url("../img/blue-grey.jpg") no-repeat center center;
   background-size: cover;

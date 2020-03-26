@@ -22,7 +22,7 @@
 
 Code for our CVPR2020 paper ["*From Patches to Pictures (PaQ-2-PiQ): Mapping the Perceptual Space of Picture Quality*"](https://arxiv.org/abs/1912.10088)
 
-> We packaged our source code built on FastAI inside FastIQA. The pure-python version will be released soon!
+> We packaged our source code built on FastAI inside FastIQA. **For the pure-python version, check it [this repo](https://github.com/baidut/paq2piq)**!
 
 ## Installation
 

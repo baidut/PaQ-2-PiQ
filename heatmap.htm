@@ -52,9 +52,9 @@ function show_obj() {
   var top_margin = 25;
 // https://stackoverflow.com/questions/318630/get-the-real-width-and-height-of-an-image-with-javascript-in-safari-chrome
 // imtest
-var img = $('#imtest')[0]; //$('#imtest')[0]; // Get my img elem
- width = img.clientWidth// display size
- height = top_margin + (img.clientHeight) // (img.naturalHeight) * width/img.naturalWidth;
+// var img = $('#imtest')[0]; //$('#imtest')[0]; // Get my img elem
+//  width = img.clientWidth// display size
+//  height = top_margin + (img.clientHeight) // (img.naturalHeight) * width/img.naturalWidth;
 
 // width = 1000; //img.width
 // height = top_margin + 500; //img.height
@@ -68,6 +68,9 @@ var img = $('#imtest')[0]; //$('#imtest')[0]; // Get my img elem
 //         width = this.width;   // Note: $(this).width() will not
 //         height = this.height; // work for in memory images.
 //     });
+var img = $('#imraw')[0]; // Get my img elem
+width = img.clientWidth // display size
+height = top_margin + img.clientHeight
 console.log(width)
 console.log(height)
  $('#image-with-heatmap').height(height);

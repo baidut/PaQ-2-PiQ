@@ -1,0 +1,177 @@
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/include_once.js"></script>
+<script src="js/plotly-latest.min.js"></script>
+<style>
+#image-with-heatmap{
+  margin-left: auto;
+  margin-right: auto;
+  left: 0px;
+  top: 0px;
+  position: relative;
+  background-color:transparent !important;
+  text-decoration:none solid rgb(0, 0, 0) !important;
+}
+#heatmap{
+  align-content:normal;align-items:normal;align-self:auto;alignment-baseline:auto;animation-delay:0s;animation-direction:normal;animation-duration:0s;animation-fill-mode:none;animation-iteration-count:1;animation-name:none;animation-play-state:running;animation-timing-function:ease;appearance:none;backdrop-filter:none;backface-visibility:visible;background-attachment:scroll;background-blend-mode:normal;background-clip:border-box;background-color:rgba(0, 0, 0, 0);background-image:none;background-origin:padding-box;background-position:0% 0%;background-repeat:repeat;background-size:auto;baseline-shift:0px;block-size:809px;border-block-end-color:rgb(0, 0, 0);border-block-end-style:none;border-block-end-width:0px;border-block-start-color:rgb(0, 0, 0);border-block-start-style:none;border-block-start-width:0px;border-bottom-color:rgb(0, 0, 0);border-bottom-left-radius:0px;border-bottom-right-radius:0px;border-bottom-style:none;border-bottom-width:0px;border-collapse:separate;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-inline-end-color:rgb(0, 0, 0);border-inline-end-style:none;border-inline-end-width:0px;border-inline-start-color:rgb(0, 0, 0);border-inline-start-style:none;border-inline-start-width:0px;border-left-color:rgb(0, 0, 0);border-left-style:none;border-left-width:0px;border-right-color:rgb(0, 0, 0);border-right-style:none;border-right-width:0px;border-top-color:rgb(0, 0, 0);border-top-left-radius:0px;border-top-right-radius:0px;border-top-style:none;border-top-width:0px;bottom:0px;box-shadow:none;box-sizing:content-box;break-after:auto;break-before:auto;break-inside:auto;buffered-rendering:auto;caption-side:top;caret-color:rgb(0, 0, 0);clear:none;clip:auto;clip-path:none;clip-rule:nonzero;color:rgb(0, 0, 0);color-interpolation:srgb;color-interpolation-filters:linearrgb;color-rendering:auto;column-count:auto;column-gap:normal;column-rule-color:rgb(0, 0, 0);column-rule-style:none;column-rule-width:0px;column-span:none;column-width:auto;content:normal;cursor:auto;cx:0px;cy:0px;d:none;direction:ltr;display:block;dominant-baseline:auto;empty-cells:show;fill:rgb(0, 0, 0);fill-opacity:1;fill-rule:nonzero;filter:none;flex-basis:auto;flex-direction:row;flex-grow:0;flex-shrink:1;flex-wrap:nowrap;float:none;flood-color:rgb(0, 0, 0);flood-opacity:1;font-family:"Times New Roman";font-kerning:auto;font-optical-sizing:auto;font-size:16px;font-stretch:100%;font-style:normal;font-variant:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;grid-auto-columns:auto;grid-auto-flow:row;grid-auto-rows:auto;grid-column-end:auto;grid-column-start:auto;grid-row-end:auto;grid-row-start:auto;grid-template-areas:none;grid-template-columns:none;grid-template-rows:none;height:809px;hyphens:manual;image-orientation:from-image;image-rendering:auto;inline-size:1176px;isolation:auto;justify-content:normal;justify-items:normal;justify-self:auto;left:0px;letter-spacing:normal;lighting-color:rgb(255, 255, 255);line-break:auto;line-height:normal;list-style-image:none;list-style-position:outside;list-style-type:disc;margin-block-end:0px;margin-block-start:0px;margin-bottom:0px;margin-inline-end:0px;margin-inline-start:0px;margin-left:0px;margin-right:0px;margin-top:0px;marker-end:none;marker-mid:none;marker-start:none;mask-type:luminance;max-block-size:none;max-height:none;max-inline-size:none;max-width:none;min-block-size:0px;min-height:0px;min-inline-size:0px;min-width:0px;mix-blend-mode:normal;object-fit:fill;object-position:50% 50%;offset-distance:0px;offset-path:none;offset-rotate:auto 0deg;opacity:1;order:0;orphans:2;outline-color:rgb(0, 0, 0);outline-offset:0px;outline-style:none;outline-width:0px;overflow-anchor:auto;overflow-wrap:normal;overflow-x:visible;overflow-y:visible;overscroll-behavior-block:auto;overscroll-behavior-inline:auto;padding-block-end:0px;padding-block-start:0px;padding-bottom:0px;padding-inline-end:0px;padding-inline-start:0px;padding-left:0px;padding-right:0px;padding-top:0px;paint-order:normal;perspective:none;perspective-origin:588px 404.5px;pointer-events:auto;position:relative;r:0px;resize:none;right:0px;row-gap:normal;ruby-position:over;rx:auto;ry:auto;scroll-behavior:auto;scroll-margin-block-end:0px;scroll-margin-block-start:0px;scroll-margin-inline-end:0px;scroll-margin-inline-start:0px;scroll-padding-block-end:auto;scroll-padding-block-start:auto;scroll-padding-inline-end:auto;scroll-padding-inline-start:auto;shape-image-threshold:0;shape-margin:0px;shape-outside:none;shape-rendering:auto;speak:normal;stop-color:rgb(0, 0, 0);stop-opacity:1;stroke:none;stroke-dasharray:none;stroke-dashoffset:0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-width:1px;tab-size:8;table-layout:auto;text-align:start;text-align-last:auto;text-anchor:start;text-decoration:none solid rgb(0, 0, 0);text-decoration-color:rgb(0, 0, 0);text-decoration-line:none;text-decoration-skip-ink:auto;text-decoration-style:solid;text-indent:0px;text-overflow:clip;text-rendering:auto;text-shadow:none;text-size-adjust:auto;text-transform:none;text-underline-position:auto;top:0px;touch-action:auto;transform:none;transform-origin:588px 404.5px;transform-style:flat;transition-delay:0s;transition-duration:0s;transition-property:all;transition-timing-function:ease;unicode-bidi:normal;user-select:auto;vector-effect:none;vertical-align:baseline;visibility:visible;white-space:normal;widows:2;width:1176px;will-change:auto;word-break:normal;word-spacing:0px;writing-mode:horizontal-tb;x:0px;y:0px;z-index:auto;zoom:1;-webkit-app-region:none;-webkit-border-horizontal-spacing:0px;-webkit-border-image:none;-webkit-border-vertical-spacing:0px;-webkit-box-align:stretch;-webkit-box-decoration-break:slice;-webkit-box-direction:normal;-webkit-box-flex:0;-webkit-box-ordinal-group:1;-webkit-box-orient:horizontal;-webkit-box-pack:start;-webkit-box-reflect:none;-webkit-font-smoothing:auto;-webkit-highlight:none;-webkit-hyphenate-character:auto;-webkit-line-break:auto;-webkit-line-clamp:none;-webkit-locale:auto;-webkit-mask-box-image:none;-webkit-mask-box-image-outset:0;-webkit-mask-box-image-repeat:stretch;-webkit-mask-box-image-slice:0 fill;-webkit-mask-box-image-source:none;-webkit-mask-box-image-width:auto;-webkit-mask-clip:border-box;-webkit-mask-composite:source-over;-webkit-mask-image:none;-webkit-mask-origin:border-box;-webkit-mask-position:0% 0%;-webkit-mask-repeat:repeat;-webkit-mask-size:auto;-webkit-print-color-adjust:economy;-webkit-rtl-ordering:logical;-webkit-tap-highlight-color:rgba(0, 0, 0, 0.18);-webkit-text-combine:none;-webkit-text-decorations-in-effect:none;-webkit-text-emphasis-color:rgb(0, 0, 0);-webkit-text-emphasis-position:over right;-webkit-text-emphasis-style:none;-webkit-text-fill-color:rgb(0, 0, 0);-webkit-text-orientation:vertical-right;-webkit-text-security:none;-webkit-text-stroke-color:rgb(0, 0, 0);-webkit-text-stroke-width:0px;-webkit-user-drag:auto;-webkit-user-modify:read-only;-webkit-writing-mode:horizontal-tb;
+}
+#heatmap1{
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  /*position: relative; this will make the heatmap non-interactive*/
+  /*z-index: -1;*/
+  z-index: 998;
+  mix-blend-mode: screen !important;
+  /* overlay; */
+}
+#imtest {
+  position: absolute;
+  left: 0px;
+  top: 25px;
+  z-index: 997;
+  opacity: 0.2;
+}
+/* this is important */
+#heatmap-ctrl{
+  z-index: 999;
+}
+</style>
+<script>
+function dumpCSSText(element){
+  var s = '';
+  var o = getComputedStyle(element);
+  for(var i = 0; i < o.length; i++){
+    s+=o[i] + ':' + o.getPropertyValue(o[i])+';';
+  }
+  return s;
+}
+function dbg() {
+  dumpCSSText($('#image-with-heatmap'))
+}
+function show_obj() {
+  var top_margin = 25;
+// https://stackoverflow.com/questions/318630/get-the-real-width-and-height-of-an-image-with-javascript-in-safari-chrome
+// imtest
+var img = $('#imtest')[0]; //$('#imtest')[0]; // Get my img elem
+ width = img.clientWidth// display size
+ height = top_margin + (img.clientHeight) // (img.naturalHeight) * width/img.naturalWidth;
+
+// width = 1000; //img.width
+// height = top_margin + 500; //img.height
+
+// width = 600; //img.width
+// height = top_margin + 400;
+
+// $("<img/>") // Make in memory copy of image to avoid css issues
+//     .attr("src", $(img).attr("src"))
+//     .load(function() {
+//         width = this.width;   // Note: $(this).width() will not
+//         height = this.height; // work for in memory images.
+//     });
+console.log(width)
+console.log(height)
+ $('#image-with-heatmap').height(height);
+ $('#image-with-heatmap').width(width);
+
+ // mat = obj.normalized_local_scores.
+//  for(var i = 0; i < mat.length; i++) {
+//     for(var j = 0; j < mat[i].length; j++) {
+//          mat[i][j] = Math.pow(mat[i][j]/100, 2)*100;
+//     }
+// }
+ // https://stackoverflow.com/questions/30610523/reverse-array-in-javascript-without-mutating-original-array
+ var data = [
+   {
+     z: obj.normalized_local_scores.slice().reverse(),
+     type: 'heatmap',
+     // opacity: 0.8,
+     showscale: false
+   }
+ ];
+
+  if(!do_stretch){
+    data[0]['zmin'] = 0; //40
+    data[0]['zmax'] = 100;
+  }
+
+  var layout = {
+    // https://stackoverflow.com/questions/29968152/python-setting-background-color-to-transparent-in-plotly-plots
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+
+    height: height,
+    width: width,
+    autosize: false, //true,
+    // hovermode: false, // important
+    margin: {
+      l: 0,
+      r: 0,
+      b: 0,
+      t: top_margin, // tooltip bar
+      pad: 0
+    },
+    xaxis: {
+      fixedrange: true, // disable zoom https://plotly.com/javascript/disable-zoom/
+      showgrid: false,
+      zeroline: false,
+      showline: false,
+      ticks: '',
+      showticklabels: false
+    },
+    yaxis: {
+      fixedrange: true, // disable zoom
+      showgrid: false,
+      zeroline: false,
+      showline: false,
+      ticks: '',
+      showticklabels: false
+    },
+  };
+  Plotly.newPlot('heatmap', data, layout);
+}
+$(document).ready(function(){
+  // bootstrap button group active
+  // https://jsfiddle.net/Behseini/NsQ2a/
+  $(".btn-group > .btn").hover(function(){
+      $(".btn-group > .btn").removeClass("active");
+      $(this).addClass("active");
+  });
+  show_obj();
+  on_update_qmap(show_obj);
+  if( isMobile.any() ) {
+    // mobile user
+    // $('#image-with-heatmap').hover(hide_heatmap, show_heatmap);
+    // $('#image-with-heatmap').addClass("column");
+    $('#btn_im_only').click(function(){ $('#imtest').css('opacity', '1'); $('#heatmap').css('opacity', '0');  }); // $('#imtest').fadeTo(1, 1);
+    $('#btn_im_map').click(function(){ $('#heatmap').css('opacity', '0.8'); $('#imtest').css('opacity', '0.2')  }); // $('#imtest').fadeTo(1000, 0.2);
+    $('#btn_map_only').click(function(){ $('#heatmap').css('opacity', '1'); $('#imtest').css('opacity', '0') });
+    // $('.advancedcfg').hide();
+  }
+  else {
+    // $('#heatmap').css('opacity', '0.8'); $('#imtest').css('opacity', '0.2')
+    // $('#image-with-heatmap').hover(show_heatmap, hide_heatmap);
+    // $('#imtest').hide()
+    $('#btn_im_only').hover(function(){ $('#imtest').css('opacity', '0.99'); $('#heatmap').css('opacity', '0.01');  }); // $('#imtest').fadeTo(1, 1);
+    $('#btn_im_map').hover(function(){ $('#heatmap').css('opacity', '0.8'); $('#imtest').css('opacity', '0.2')  }); // $('#imtest').fadeTo(1000, 0.2);
+    $('#btn_map_only').hover(function(){ $('#heatmap').css('opacity', '0.99'); $('#imtest').css('opacity', '0.01') });
+  }
+})
+</script>
+<div class="doublecolumn">
+  <div id='image-with-heatmap' >
+    <div id="heatmap"></div>
+    <img id='imtest' src='demo/Picture1.jpg' style="width: 100%" />
+  </div>
+  <br/>
+  <div class="btn-group" id='heatmap-ctrl' role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-sm btn-secondary" id='btn_im_only'
+      data-toggle="tooltip" title="Show image only" >
+      Image</button>
+    <button type="button" class="btn btn-sm btn-secondary active" id='btn_im_map'
+     data-toggle="tooltip" title="Show both image and heatmap" >
+      Both</button>
+    <button type="button" class="btn btn-sm btn-secondary" id='btn_map_only'
+      data-toggle="tooltip" title="Show heatmap only" >
+      Heatmap</button>
+  </div>
+</div>

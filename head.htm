@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="full-height" lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{abbr}}</title>
+    <meta name="description" content="Material design app landing page template built by TemplateFlip.com"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/column.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+
+    <!-- <link href="css/reset-this.css" rel="stylesheet"> -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- <link href="styles/main.css" rel="stylesheet"> -->
+
+    <!-- <link href="styles/photo.css" rel="stylesheet"> -->
+    <!-- <link href="styles/social_bar.css" rel="stylesheet"> -->
+
+    <!-- include jQuery library -->
+    <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
+
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-STXPXN06N9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-STXPXN06N9');
+    </script>
+
+    <script>
+    const event = new Event('update_qmap');
+    function update_qmap(){
+      document.dispatchEvent(event);
+    }
+    function on_update_qmap(f) {
+      document.addEventListener('update_qmap', function (e) { /* ... */f(); }, false);
+      // elem.addEventListener('build', function (e) { /* ... */ }, false);
+    }
+    </script>
+  </head>
+  <body id="top">
+    <header>
+      <!-- Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" id="navbar">
+        <div class="container"><a class="navbar-brand" href="#"><strong>{{abbr}}</strong></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link active" href="#abstract">ABOUT</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#applications">APPLICATIONS</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#online-demo">DEMO</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#links">LINKS</a></li>
+              <!-- TODO: media/video -->
+              <!--  -->
+              <!-- <li class="nav-item"><a class="nav-link active" href="#features">Features</a></li> -->
+              <!-- <li class="nav-item"><a class="nav-link active" href="#screenshots">Screenshots</a></li>
+              <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li> -->
+              <!-- <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+              <li class="nav-item"><a class="nav-link" href="#client">Client</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
+            </ul><a class="btn btn-default btn-rounded my-0" href="#download-zone">Download</a>
+          </div>
+        </div>
+      </nav>
+
+<section class="py-5 special-color-dark text-white" id="about">
+  <div class="container">
+    <div class="wow fadeIn">
+      <h2 class="h1 h1-responsive text-center my-5">{{title}}</h2>
+      <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
+        <div align = "center">
+          <div class="authorname" style="font-size:large;line-adjust:0">
+            {{authors}}
+          </div>
+          <div class="authoraddress" style="line-adjust:0">
+            {{address}}
+          <div class="authoremail email" style="line-adjust:0">
+            {{emails}}
+          </div>
+
+          <hr>
+            *+Equal contribution
+          <br/>
+            {{icon}}
+        </div>
+
+
+
+        <div class="wow zoomIn text-center">
+
+            <!-- <p class="h4 h4-responsive pt-5 pb-2 text-center"> -->
+            <!-- <br/>
+            <a href="https://github.com/baidut/PaQ-2-PiQ" class="btn btn-secondary">
+            <i class="fa fa-github "></i>
+             Souce code available
+             </a>
+             <br/><br/> -->
+          <!-- </p> -->
+        </div>
+    </p>
+    </div>
+</section>
+
+
+<!-- <section class="py-5 grey lighten-4" id="offline-demo">
+  <div class="container">
+    <div class="wow fadeInUp">
+      <h2 class="h1 h1-responsive text-center my-5">Spread the news</h2>
+      <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
+
+      </p>
+    </div>
+
+    <div class="icon-bar" style="text-align: center">
+      <a href="https://www.facebook.com/" class="facebook"><i class="social fa fa-facebook"></i></a>
+      <a href="https://twitter.com/" class="twitter"><i class="social fa fa-twitter"></i></a>
+      <a href="#" class="google"><i class="social fa fa-google"></i></a>
+      <a href="#" class="linkedin"><i class="social fa fa-linkedin"></i></a>
+      <a href="#" class="youtube"><i class="social fa fa-youtube"></i></a>
+    </div>
+
+    </div>
+</section> -->

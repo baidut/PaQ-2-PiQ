@@ -1,0 +1,74 @@
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/include_once.js"></script>
+<!-- Filepond stylesheet -->
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  // const pond = FilePond.create(); // document.querySelector('.filepond');
+  FilePond.setOptions({
+      maxFiles: 1,
+      server: {
+          // url: 'http://localhost:8080',
+          // url: 'https://10.157.89.130',
+          // https gives ERR_CONNECTION_REFUSED
+          url: 'https://paq2piq.appspot.com',
+          process: {
+              url: '/filepond',
+              method: 'POST',
+              withCredentials: false,
+              crossDomain: true,
+              headers: {},
+              timeout: 7000,
+              onload: (response) => {
+                 console.log(response);
+                 obj = JSON.parse(response);
+                 update_qmap();
+              },
+              onerror: null,
+              ondata: null,
+          }
+      }
+  });
+  FilePond.parse(document.body);
+});
+
+document.addEventListener('FilePond:loaded', e => {
+    console.log('FilePond ready for use', e.detail);
+    const inputElement = document.querySelector('#filepond');
+    const pond = FilePond.create( inputElement );
+
+    pond.on('addfile', (error, file) => {
+        if (error) {
+            console.log('Oh no');
+            return;
+        }
+        //console.log('File added', file);
+        f = window.URL.createObjectURL(pond.getFile().file)
+        //console.log(pond.getFile().file)
+        //console.log(f)
+
+        document.querySelector('#imtest').src = f
+        document.querySelector('#imraw').src = f
+        $('#imtest').fadeTo(1000, 0.2);
+        $('#heatmap').fadeTo(1000, 0);
+        var img = $('#imraw')[0]; // Get my img elem
+        width = img.clientWidth // display size
+        height = top_margin + img.clientHeight
+        $('#image-with-heatmap').height(height);
+        $('#image-with-heatmap').width(width);
+        // $('btn_im_only').trigger('mouseenter');
+    });
+});
+</script>
+
+<div class="doublecolumnL" style="text-align:center">
+  <br/>
+  <img id='imraw' src='demo/Picture1.jpg' style="width: 100%"></img>
+  <br/>
+  <input type="file" class="filepond" style="height: 500" id='filepond' />
+
+  <!-- <div class="alert alert-primary" role="alert">
+    Step 1: upload your file:
+  </div> -->
+</div>

@@ -1,22 +1,51 @@
-#image-with-heatmap{
-  margin-left: auto;
-  margin-right: auto;
-  left: 0px;
-  top: 0px;
-  position: relative;
+
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
 }
-#heatmap{
-  left: 0px;
-  top: 0px;
-  position: absolute;
-  /*position: relative; this will make the heatmap non-interactive*/
-  /*z-index: -1;*/
-  mix-blend-mode: overlay; /* this is important */
+
+.doublecolumnL {
+  -ms-flex: 40%; /* IE10 */
+   flex: 40%;
+  max-width: 40%;
+  padding: 0 8px;
 }
-#imtest {
-  position: absolute;
-  left: 0px;
-  top: 25px;
-  z-index: -1;
-  opacity: 0.2;
+
+.doublecolumnR {
+  -ms-flex: 50%; /* IE10 */
+   flex: 50%;
+  padding: 0 8px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+  .doublecolumn {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
 }

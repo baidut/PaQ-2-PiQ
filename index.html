@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+    
+      <!DOCTYPE html>
 <html class="full-height" lang="en-US">
   <head>
     <meta charset="UTF-8">
@@ -8,15 +10,22 @@
     <meta name="description" content="Material design app landing page template built by TemplateFlip.com"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
-    <link href="styles/photo.css" rel="stylesheet">
-    <link href="styles/heatmap.css" rel="stylesheet">
-    <link href="styles/switch.css" rel="stylesheet">
-    <link href="styles/social_bar.css" rel="stylesheet">
+    <link href="styles/column.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
 
-    <!-- Filepond stylesheet -->
-    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <!-- <link href="css/reset-this.css" rel="stylesheet"> -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- <link href="styles/main.css" rel="stylesheet"> -->
+
+    <!-- <link href="styles/photo.css" rel="stylesheet"> -->
+    <!-- <link href="styles/social_bar.css" rel="stylesheet"> -->
+
+    <!-- include jQuery library -->
+    <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
+
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-STXPXN06N9"></script>
@@ -26,6 +35,17 @@
       gtag('js', new Date());
 
       gtag('config', 'G-STXPXN06N9');
+    </script>
+
+    <script>
+    const event = new Event('update_qmap');
+    function update_qmap(){
+      document.dispatchEvent(event);
+    }
+    function on_update_qmap(f) {
+      document.addEventListener('update_qmap', function (e) { /* ... */f(); }, false);
+      // elem.addEventListener('build', function (e) { /* ... */ }, false);
+    }
     </script>
   </head>
   <body id="top">
@@ -61,20 +81,22 @@
         <div align = "center">
           <div class="authorname" style="font-size:large;line-adjust:0">
             Zhenqiang Ying<sup>1*</sup>,
-            Haoran Niu<sup>1*</sup>,
-            Praful Gupta<sup>1</sup>,
-            Dhruv Mahajan<sup>2</sup>,
-            Deepti Ghadiyaram<sup>2+</sup>,
-            Alan Bovik<sup>1+</sup>,
+Haoran Niu<sup>1*</sup>,
+Praful Gupta<sup>1</sup>,
+Dhruv Mahajan<sup>2</sup>,
+Deepti Ghadiyaram<sup>2+</sup>,
+Alan Bovik<sup>1+</sup>,
           </div>
           <div class="authoraddress" style="line-adjust:0">
-            <sup>1</sup>University of Texas at Austin,
-            <sup>2</sup>Facebook AI</div>
+            
           <div class="authoremail email" style="line-adjust:0">
             {zqying, haoranniu, praful gupta}@utexas.edu, {dhruvm, deeptigp}@fb.com, bovik@ece.utexas.edu
           </div>
+
+          <hr>
+            *+Equal contribution
           <br/>
-          <a href='http://cvpr2020.thecvf.com/' ><img src='https://img.shields.io/badge/CVPR-2020-blue.svg' /> </a>
+            <a href='http://cvpr2020.thecvf.com/' ><img src='https://img.shields.io/badge/CVPR-2020-blue.svg' /> </a>
         </div>
 
 
@@ -95,8 +117,54 @@
 </section>
 
 
+<!-- <section class="py-5 grey lighten-4" id="offline-demo">
+  <div class="container">
+    <div class="wow fadeInUp">
+      <h2 class="h1 h1-responsive text-center my-5">Spread the news</h2>
+      <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
 
+      </p>
+    </div>
 
+    <div class="icon-bar" style="text-align: center">
+      <a href="https://www.facebook.com/" class="facebook"><i class="social fa fa-facebook"></i></a>
+      <a href="https://twitter.com/" class="twitter"><i class="social fa fa-twitter"></i></a>
+      <a href="#" class="google"><i class="social fa fa-google"></i></a>
+      <a href="#" class="linkedin"><i class="social fa fa-linkedin"></i></a>
+      <a href="#" class="youtube"><i class="social fa fa-youtube"></i></a>
+    </div>
+
+    </div>
+</section> -->
+    
+      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/include_once.js"></script>
+<script>
+function toggle_heatmap() {
+  $(this).attr('src', $(this).attr('src').replace("_raw.jpg", "_map.jpg"));
+}
+function toggle_image() {
+  $(this).attr('src', $(this).attr('src').replace("_map.jpg", "_raw.jpg"));
+}
+function show_heatmap(){
+  $('#heatmap').show();
+  $('#imtest').fadeTo(500, 0.2)
+}
+function hide_heatmap(){
+  $('#heatmap').hide();
+  $('#imtest').fadeTo(500, 1)
+}
+$(document).ready(function(){
+  // $("#imgUploaded").hover(hide_image, show_image);
+  if( isMobile.any() ) {
+    // mobile user
+    $('.hovertoggle').bind('touchstart', toggle_heatmap).bind('touchend', toggle_image)
+  }
+  else {
+    $('.hovertoggle').hover(toggle_heatmap, toggle_image);
+  }
+})
+</script>
 <section class="py-5 grey lighten-4" id="abstract">
   <div class="container">
     <div class="wow fadeInUp">
@@ -109,7 +177,6 @@
       <br/>
       <br/>
     </div>
-
 
 <!-- Photo Grid -->
 <div class="row">
@@ -144,9 +211,8 @@
   </div>
 </div>
 </section>
-
-
-<section class="py-5 text-white" style="background: black;" id="applications">
+    
+      <section class="py-5 text-white" style="background: black;" id="applications">
   <div class="container">
     <div class="wow fadeInUp">
       <h2 class="h1 h1-responsive text-center my-5">APPLICATIONS</h2>
@@ -272,6 +338,11 @@
   <!--Carousel Wrapper-->
   </div>
 </section>
+    
+      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/include_once.js"></script>
+<link href="styles/heatmap.css" rel="stylesheet">
+<link href="styles/switch.css" rel="stylesheet">
 
 
 <section class="text-center py-5" id="online-demo">
@@ -286,42 +357,258 @@
       </div>
 
       <div class="row">
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/include_once.js"></script>
+<!-- Filepond stylesheet -->
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  // const pond = FilePond.create(); // document.querySelector('.filepond');
+  FilePond.setOptions({
+      maxFiles: 1,
+      server: {
+          // url: 'http://localhost:8080',
+          // url: 'https://10.157.89.130',
+          // https gives ERR_CONNECTION_REFUSED
+          url: 'https://paq2piq.appspot.com',
+          process: {
+              url: '/filepond',
+              method: 'POST',
+              withCredentials: false,
+              crossDomain: true,
+              headers: {},
+              timeout: 7000,
+              onload: (response) => {
+                 console.log(response);
+                 obj = JSON.parse(response);
+                 update_qmap();
+              },
+              onerror: null,
+              ondata: null,
+          }
+      }
+  });
+  FilePond.parse(document.body);
+});
 
-        <div class="doublecolumn" style="text-align:center">
-          <br/>
-          <img id='imraw' src='demo/Picture1.jpg' style="width: 100%"></img>
-          <br/>
-          <input type="file" class="filepond" style="height: 500" id='filepond' />
+document.addEventListener('FilePond:loaded', e => {
+    console.log('FilePond ready for use', e.detail);
+    const inputElement = document.querySelector('#filepond');
+    const pond = FilePond.create( inputElement );
 
-          <!-- <div class="alert alert-primary" role="alert">
-            Step 1: upload your file:
-          </div> -->
-        </div>
+    pond.on('addfile', (error, file) => {
+        if (error) {
+            console.log('Oh no');
+            return;
+        }
+        //console.log('File added', file);
+        f = window.URL.createObjectURL(pond.getFile().file)
+        //console.log(pond.getFile().file)
+        //console.log(f)
 
+        document.querySelector('#imtest').src = f
+        document.querySelector('#imraw').src = f
+        $('#imtest').fadeTo(1000, 0.2);
+        $('#heatmap').fadeTo(1000, 0);
+        var img = $('#imraw')[0]; // Get my img elem
+        width = img.clientWidth // display size
+        height = top_margin + img.clientHeight
+        $('#image-with-heatmap').height(height);
+        $('#image-with-heatmap').width(width);
+        // $('btn_im_only').trigger('mouseenter');
+    });
+});
+</script>
 
+<div class="doublecolumnL" style="text-align:center">
+  <br/>
+  <img id='imraw' src='demo/Picture1.jpg' style="width: 100%"></img>
+  <br/>
+  <input type="file" class="filepond" style="height: 500" id='filepond' />
 
-        <div class="doublecolumn">
-          <div id='image-with-heatmap' >
-            <img id='imtest' src='demo/Picture1.jpg' style="width: 100%"></img>
-            <div id="heatmap"></div>
-          <!-- style="width: 100%" -->
-          </div>
-          <br/>
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-sm btn-secondary" id='btn_im_only'
-              data-toggle="tooltip" title="Show image only" >
-              Image</button>
-            <button type="button" class="btn btn-sm btn-secondary active" id='btn_im_map'
-             data-toggle="tooltip" title="Show both image and heatmap" >
-              Both</button>
-            <button type="button" class="btn btn-sm btn-secondary" id='btn_map_only'
-              data-toggle="tooltip" title="Show heatmap only" >
-              Heatmap</button>
-          </div>
-          <br/>
-        </div>
+  <!-- <div class="alert alert-primary" role="alert">
+    Step 1: upload your file:
+  </div> -->
+</div>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/include_once.js"></script>
+<script src="js/plotly-latest.min.js"></script>
+<style>
+#image-with-heatmap{
+  margin-left: auto;
+  margin-right: auto;
+  left: 0px;
+  top: 0px;
+  position: relative;
+  background-color:transparent !important;
+  text-decoration:none solid rgb(0, 0, 0) !important;
+}
+#heatmap{
+  align-content:normal;align-items:normal;align-self:auto;alignment-baseline:auto;animation-delay:0s;animation-direction:normal;animation-duration:0s;animation-fill-mode:none;animation-iteration-count:1;animation-name:none;animation-play-state:running;animation-timing-function:ease;appearance:none;backdrop-filter:none;backface-visibility:visible;background-attachment:scroll;background-blend-mode:normal;background-clip:border-box;background-color:rgba(0, 0, 0, 0);background-image:none;background-origin:padding-box;background-position:0% 0%;background-repeat:repeat;background-size:auto;baseline-shift:0px;block-size:809px;border-block-end-color:rgb(0, 0, 0);border-block-end-style:none;border-block-end-width:0px;border-block-start-color:rgb(0, 0, 0);border-block-start-style:none;border-block-start-width:0px;border-bottom-color:rgb(0, 0, 0);border-bottom-left-radius:0px;border-bottom-right-radius:0px;border-bottom-style:none;border-bottom-width:0px;border-collapse:separate;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-inline-end-color:rgb(0, 0, 0);border-inline-end-style:none;border-inline-end-width:0px;border-inline-start-color:rgb(0, 0, 0);border-inline-start-style:none;border-inline-start-width:0px;border-left-color:rgb(0, 0, 0);border-left-style:none;border-left-width:0px;border-right-color:rgb(0, 0, 0);border-right-style:none;border-right-width:0px;border-top-color:rgb(0, 0, 0);border-top-left-radius:0px;border-top-right-radius:0px;border-top-style:none;border-top-width:0px;bottom:0px;box-shadow:none;box-sizing:content-box;break-after:auto;break-before:auto;break-inside:auto;buffered-rendering:auto;caption-side:top;caret-color:rgb(0, 0, 0);clear:none;clip:auto;clip-path:none;clip-rule:nonzero;color:rgb(0, 0, 0);color-interpolation:srgb;color-interpolation-filters:linearrgb;color-rendering:auto;column-count:auto;column-gap:normal;column-rule-color:rgb(0, 0, 0);column-rule-style:none;column-rule-width:0px;column-span:none;column-width:auto;content:normal;cursor:auto;cx:0px;cy:0px;d:none;direction:ltr;display:block;dominant-baseline:auto;empty-cells:show;fill:rgb(0, 0, 0);fill-opacity:1;fill-rule:nonzero;filter:none;flex-basis:auto;flex-direction:row;flex-grow:0;flex-shrink:1;flex-wrap:nowrap;float:none;flood-color:rgb(0, 0, 0);flood-opacity:1;font-family:"Times New Roman";font-kerning:auto;font-optical-sizing:auto;font-size:16px;font-stretch:100%;font-style:normal;font-variant:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-weight:400;grid-auto-columns:auto;grid-auto-flow:row;grid-auto-rows:auto;grid-column-end:auto;grid-column-start:auto;grid-row-end:auto;grid-row-start:auto;grid-template-areas:none;grid-template-columns:none;grid-template-rows:none;height:809px;hyphens:manual;image-orientation:from-image;image-rendering:auto;inline-size:1176px;isolation:auto;justify-content:normal;justify-items:normal;justify-self:auto;left:0px;letter-spacing:normal;lighting-color:rgb(255, 255, 255);line-break:auto;line-height:normal;list-style-image:none;list-style-position:outside;list-style-type:disc;margin-block-end:0px;margin-block-start:0px;margin-bottom:0px;margin-inline-end:0px;margin-inline-start:0px;margin-left:0px;margin-right:0px;margin-top:0px;marker-end:none;marker-mid:none;marker-start:none;mask-type:luminance;max-block-size:none;max-height:none;max-inline-size:none;max-width:none;min-block-size:0px;min-height:0px;min-inline-size:0px;min-width:0px;mix-blend-mode:normal;object-fit:fill;object-position:50% 50%;offset-distance:0px;offset-path:none;offset-rotate:auto 0deg;opacity:1;order:0;orphans:2;outline-color:rgb(0, 0, 0);outline-offset:0px;outline-style:none;outline-width:0px;overflow-anchor:auto;overflow-wrap:normal;overflow-x:visible;overflow-y:visible;overscroll-behavior-block:auto;overscroll-behavior-inline:auto;padding-block-end:0px;padding-block-start:0px;padding-bottom:0px;padding-inline-end:0px;padding-inline-start:0px;padding-left:0px;padding-right:0px;padding-top:0px;paint-order:normal;perspective:none;perspective-origin:588px 404.5px;pointer-events:auto;position:relative;r:0px;resize:none;right:0px;row-gap:normal;ruby-position:over;rx:auto;ry:auto;scroll-behavior:auto;scroll-margin-block-end:0px;scroll-margin-block-start:0px;scroll-margin-inline-end:0px;scroll-margin-inline-start:0px;scroll-padding-block-end:auto;scroll-padding-block-start:auto;scroll-padding-inline-end:auto;scroll-padding-inline-start:auto;shape-image-threshold:0;shape-margin:0px;shape-outside:none;shape-rendering:auto;speak:normal;stop-color:rgb(0, 0, 0);stop-opacity:1;stroke:none;stroke-dasharray:none;stroke-dashoffset:0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-width:1px;tab-size:8;table-layout:auto;text-align:start;text-align-last:auto;text-anchor:start;text-decoration:none solid rgb(0, 0, 0);text-decoration-color:rgb(0, 0, 0);text-decoration-line:none;text-decoration-skip-ink:auto;text-decoration-style:solid;text-indent:0px;text-overflow:clip;text-rendering:auto;text-shadow:none;text-size-adjust:auto;text-transform:none;text-underline-position:auto;top:0px;touch-action:auto;transform:none;transform-origin:588px 404.5px;transform-style:flat;transition-delay:0s;transition-duration:0s;transition-property:all;transition-timing-function:ease;unicode-bidi:normal;user-select:auto;vector-effect:none;vertical-align:baseline;visibility:visible;white-space:normal;widows:2;width:1176px;will-change:auto;word-break:normal;word-spacing:0px;writing-mode:horizontal-tb;x:0px;y:0px;z-index:auto;zoom:1;-webkit-app-region:none;-webkit-border-horizontal-spacing:0px;-webkit-border-image:none;-webkit-border-vertical-spacing:0px;-webkit-box-align:stretch;-webkit-box-decoration-break:slice;-webkit-box-direction:normal;-webkit-box-flex:0;-webkit-box-ordinal-group:1;-webkit-box-orient:horizontal;-webkit-box-pack:start;-webkit-box-reflect:none;-webkit-font-smoothing:auto;-webkit-highlight:none;-webkit-hyphenate-character:auto;-webkit-line-break:auto;-webkit-line-clamp:none;-webkit-locale:auto;-webkit-mask-box-image:none;-webkit-mask-box-image-outset:0;-webkit-mask-box-image-repeat:stretch;-webkit-mask-box-image-slice:0 fill;-webkit-mask-box-image-source:none;-webkit-mask-box-image-width:auto;-webkit-mask-clip:border-box;-webkit-mask-composite:source-over;-webkit-mask-image:none;-webkit-mask-origin:border-box;-webkit-mask-position:0% 0%;-webkit-mask-repeat:repeat;-webkit-mask-size:auto;-webkit-print-color-adjust:economy;-webkit-rtl-ordering:logical;-webkit-tap-highlight-color:rgba(0, 0, 0, 0.18);-webkit-text-combine:none;-webkit-text-decorations-in-effect:none;-webkit-text-emphasis-color:rgb(0, 0, 0);-webkit-text-emphasis-position:over right;-webkit-text-emphasis-style:none;-webkit-text-fill-color:rgb(0, 0, 0);-webkit-text-orientation:vertical-right;-webkit-text-security:none;-webkit-text-stroke-color:rgb(0, 0, 0);-webkit-text-stroke-width:0px;-webkit-user-drag:auto;-webkit-user-modify:read-only;-webkit-writing-mode:horizontal-tb;
+}
+#heatmap1{
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  /*position: relative; this will make the heatmap non-interactive*/
+  /*z-index: -1;*/
+  z-index: 998;
+  mix-blend-mode: screen !important;
+  /* overlay; */
+}
+#imtest {
+  position: absolute;
+  left: 0px;
+  top: 25px;
+  z-index: 997;
+  opacity: 0.2;
+}
+/* this is important */
+#heatmap-ctrl{
+  z-index: 999;
+}
+</style>
+<script>
+function dumpCSSText(element){
+  var s = '';
+  var o = getComputedStyle(element);
+  for(var i = 0; i < o.length; i++){
+    s+=o[i] + ':' + o.getPropertyValue(o[i])+';';
+  }
+  return s;
+}
+function dbg() {
+  dumpCSSText($('#image-with-heatmap'))
+}
+function show_obj() {
+  var top_margin = 25;
+// https://stackoverflow.com/questions/318630/get-the-real-width-and-height-of-an-image-with-javascript-in-safari-chrome
+// imtest
+var img = $('#imtest')[0]; //$('#imtest')[0]; // Get my img elem
+ width = img.clientWidth// display size
+ height = top_margin + (img.clientHeight) // (img.naturalHeight) * width/img.naturalWidth;
+
+// width = 1000; //img.width
+// height = top_margin + 500; //img.height
+
+// width = 600; //img.width
+// height = top_margin + 400;
+
+// $("<img/>") // Make in memory copy of image to avoid css issues
+//     .attr("src", $(img).attr("src"))
+//     .load(function() {
+//         width = this.width;   // Note: $(this).width() will not
+//         height = this.height; // work for in memory images.
+//     });
+console.log(width)
+console.log(height)
+ $('#image-with-heatmap').height(height);
+ $('#image-with-heatmap').width(width);
+
+ // mat = obj.normalized_local_scores.
+//  for(var i = 0; i < mat.length; i++) {
+//     for(var j = 0; j < mat[i].length; j++) {
+//          mat[i][j] = Math.pow(mat[i][j]/100, 2)*100;
+//     }
+// }
+ // https://stackoverflow.com/questions/30610523/reverse-array-in-javascript-without-mutating-original-array
+ var data = [
+   {
+     z: obj.normalized_local_scores.slice().reverse(),
+     type: 'heatmap',
+     // opacity: 0.8,
+     showscale: false
+   }
+ ];
+
+  if(!do_stretch){
+    data[0]['zmin'] = 0; //40
+    data[0]['zmax'] = 100;
+  }
+
+  var layout = {
+    // https://stackoverflow.com/questions/29968152/python-setting-background-color-to-transparent-in-plotly-plots
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+
+    height: height,
+    width: width,
+    autosize: false, //true,
+    // hovermode: false, // important
+    margin: {
+      l: 0,
+      r: 0,
+      b: 0,
+      t: top_margin, // tooltip bar
+      pad: 0
+    },
+    xaxis: {
+      fixedrange: true, // disable zoom https://plotly.com/javascript/disable-zoom/
+      showgrid: false,
+      zeroline: false,
+      showline: false,
+      ticks: '',
+      showticklabels: false
+    },
+    yaxis: {
+      fixedrange: true, // disable zoom
+      showgrid: false,
+      zeroline: false,
+      showline: false,
+      ticks: '',
+      showticklabels: false
+    },
+  };
+  Plotly.newPlot('heatmap', data, layout);
+}
+$(document).ready(function(){
+  // bootstrap button group active
+  // https://jsfiddle.net/Behseini/NsQ2a/
+  $(".btn-group > .btn").hover(function(){
+      $(".btn-group > .btn").removeClass("active");
+      $(this).addClass("active");
+  });
+  show_obj();
+  on_update_qmap(show_obj);
+  if( isMobile.any() ) {
+    // mobile user
+    // $('#image-with-heatmap').hover(hide_heatmap, show_heatmap);
+    // $('#image-with-heatmap').addClass("column");
+    $('#btn_im_only').click(function(){ $('#imtest').css('opacity', '1'); $('#heatmap').css('opacity', '0');  }); // $('#imtest').fadeTo(1, 1);
+    $('#btn_im_map').click(function(){ $('#heatmap').css('opacity', '0.8'); $('#imtest').css('opacity', '0.2')  }); // $('#imtest').fadeTo(1000, 0.2);
+    $('#btn_map_only').click(function(){ $('#heatmap').css('opacity', '1'); $('#imtest').css('opacity', '0') });
+    // $('.advancedcfg').hide();
+  }
+  else {
+    // $('#heatmap').css('opacity', '0.8'); $('#imtest').css('opacity', '0.2')
+    // $('#image-with-heatmap').hover(show_heatmap, hide_heatmap);
+    // $('#imtest').hide()
+    $('#btn_im_only').hover(function(){ $('#imtest').css('opacity', '0.99'); $('#heatmap').css('opacity', '0.01');  }); // $('#imtest').fadeTo(1, 1);
+    $('#btn_im_map').hover(function(){ $('#heatmap').css('opacity', '0.8'); $('#imtest').css('opacity', '0.2')  }); // $('#imtest').fadeTo(1000, 0.2);
+    $('#btn_map_only').hover(function(){ $('#heatmap').css('opacity', '0.99'); $('#imtest').css('opacity', '0.01') });
+  }
+})
+</script>
+<div class="doublecolumn">
+  <div id='image-with-heatmap' >
+    <div id="heatmap"></div>
+    <img id='imtest' src='demo/Picture1.jpg' style="width: 100%" />
+  </div>
+  <br/>
+  <div class="btn-group" id='heatmap-ctrl' role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-sm btn-secondary" id='btn_im_only'
+      data-toggle="tooltip" title="Show image only" >
+      Image</button>
+    <button type="button" class="btn btn-sm btn-secondary active" id='btn_im_map'
+     data-toggle="tooltip" title="Show both image and heatmap" >
+      Both</button>
+    <button type="button" class="btn btn-sm btn-secondary" id='btn_map_only'
+      data-toggle="tooltip" title="Show heatmap only" >
+      Heatmap</button>
+  </div>
+</div>
         <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
-
       </div>
 
       <br/>
@@ -345,88 +632,130 @@
             <!-- <span >?</span> -->
           </div>
         </div>
+        <script>
+function update_hist() {
 
-        <div class="doublecolumn advancedcfg">
-          <div class="alert alert-light" role="alert">
-            Local score histogram and global score
+    var hist_data = [
+      {
+        x: [].concat(...obj.normalized_local_scores.slice()),
+        type: 'histogram',
+    	  histnorm: 'probability',
+    	  marker: {
+            color: 'rgb(0,0,100)',
+         },
+      }
+    ];
 
-            <br/>
-            <div align="center" id='qualityHist' style="width:100%; height: 80px"></div>
-            <br/>
+    var hist_layout = {
+      height: 100,
+      width: 400,
+      autosize: true,
+      margin: {
+        l: 25,
+        r: 25,
+        b: 20,
+        t: 0, // tooltip bar
+        pad: 0
+      },
+    };
 
-            <!-- credit:
-            http://juliagraphics.github.io/Colors.jl/stable/colormaps/
-            https://www.browserling.com/tools/reverse-lines -->
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="70%" height="4mm" viewBox="0 0 32 1" preserveAspectRatio="none" shape-rendering="crispEdges" stroke="none" style="width: 70%; height: 11.1667px;">
-             <rect width="32" height="1" x=" 0" y="0" fill="#082C59"></rect>
-             <rect width="31" height="1" x=" 1" y="0" fill="#143F77"></rect>
-             <rect width="30" height="1" x=" 2" y="0" fill="#1F5392"></rect>
-             <rect width="29" height="1" x=" 3" y="0" fill="#2B65A9"></rect>
-             <rect width="28" height="1" x=" 4" y="0" fill="#3777BC"></rect>
-             <rect width="27" height="1" x=" 5" y="0" fill="#4588CC"></rect>
-             <rect width="26" height="1" x=" 6" y="0" fill="#5598D8"></rect>
-             <rect width="25" height="1" x=" 7" y="0" fill="#65A7E1"></rect>
-             <rect width="24" height="1" x=" 8" y="0" fill="#76B4E8"></rect>
-             <rect width="23" height="1" x=" 9" y="0" fill="#87C0ED"></rect>
-             <rect width="22" height="1" x="10" y="0" fill="#98CBF1"></rect>
-             <rect width="21" height="1" x="11" y="0" fill="#A9D5F4"></rect>
-             <rect width="20" height="1" x="12" y="0" fill="#B9DEF7"></rect>
-             <rect width="19" height="1" x="13" y="0" fill="#C8E6F9"></rect>
-             <rect width="18" height="1" x="14" y="0" fill="#D7EEFB"></rect>
-             <rect width="17" height="1" x="15" y="0" fill="#E5F4FD"></rect>
-             <rect width="16" height="1" x="16" y="0" fill="#FFECE7"></rect>
-             <rect width="15" height="1" x="17" y="0" fill="#FFE2DA"></rect>
-             <rect width="14" height="1" x="18" y="0" fill="#FFD6CC"></rect>
-             <rect width="13" height="1" x="19" y="0" fill="#FFCABD"></rect>
-             <rect width="12" height="1" x="20" y="0" fill="#FFBCAD"></rect>
-             <rect width="11" height="1" x="21" y="0" fill="#FFAE9D"></rect>
-             <rect width="10" height="1" x="22" y="0" fill="#FF9E8C"></rect>
-             <rect width=" 9" height="1" x="23" y="0" fill="#FF8D7B"></rect>
-             <rect width=" 8" height="1" x="24" y="0" fill="#FB7B6A"></rect>
-             <rect width=" 7" height="1" x="25" y="0" fill="#F16858"></rect>
-             <rect width=" 6" height="1" x="26" y="0" fill="#E35546"></rect>
-             <rect width=" 5" height="1" x="27" y="0" fill="#D14136"></rect>
-             <rect width=" 4" height="1" x="28" y="0" fill="#BB2E26"></rect>
-             <rect width=" 3" height="1" x="29" y="0" fill="#A11C18"></rect>
-             <rect width=" 2" height="1" x="30" y="0" fill="#820C0A"></rect>
-             <rect width=" 1" height="1" x="31" y="0" fill="#610102"></rect>
-            </svg>
+    // https://plot.ly/javascript/axes/
+    if(!do_stretch){
+      hist_layout['xaxis'] = {range: [0, 100]}
+    }
+    Plotly.newPlot('qualityHist', hist_data, hist_layout);
+    // $('#btn_im_map').trigger('mouseenter');
+    // $('#btn_im_map').trigger("click"); // mobile
 
-            <div class="progress" style="display: inline-block; height: 20px; width: 70%" >
-              <div id='score' class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          <br/>
-        </div>
-        </div>
+
+    // alert(obj.global);
+    // $('#score').text(obj.result);
+
+    // score = Math.pow(obj.result/100, 2)*100;
+    score = obj.normalized_global_score;
+    $('#score').width(score+'%').attr('aria-valuenow', score+'%');
+    // Predicted Quality Score: ' +
+    $('#score').text(score);
+    $('#h1_score').text(obj.category);
+    // to do, support multiple files
+   // https://plot.ly/javascript/colorscales/
+   //$('#imtest').height()  document.querySelector('#imtest').height
+   //
+}
+
+$(document).ready(function(){
+  // $("#imgUploaded").hover(hide_image, show_image);
+  // $('#heatmap').css('opacity', '0.8'); $('#imtest').css('opacity', '0.2')
+  $('#check_contrast_stretch').change(update_qmap);
+  update_hist();
+  on_update_qmap(update_hist);
+  // $('#check_contrast_stretch').prop( "checked", true );
+});
+</script>
+
+<div class="doublecolumn advancedcfg">
+
+  <div class="alert alert-light" role="alert">
+    Local score histogram and global score
+
+    <br/>
+    <div align="center" id='qualityHist' style="width:100%; height: 80px"></div>
+    <br/>
+
+    <!-- credit:
+    http://juliagraphics.github.io/Colors.jl/stable/colormaps/
+    https://www.browserling.com/tools/reverse-lines -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="70%" height="4mm" viewBox="0 0 32 1" preserveAspectRatio="none" shape-rendering="crispEdges" stroke="none" style="width: 70%; height: 11.1667px;">
+     <rect width="32" height="1" x=" 0" y="0" fill="#082C59"></rect>
+     <rect width="31" height="1" x=" 1" y="0" fill="#143F77"></rect>
+     <rect width="30" height="1" x=" 2" y="0" fill="#1F5392"></rect>
+     <rect width="29" height="1" x=" 3" y="0" fill="#2B65A9"></rect>
+     <rect width="28" height="1" x=" 4" y="0" fill="#3777BC"></rect>
+     <rect width="27" height="1" x=" 5" y="0" fill="#4588CC"></rect>
+     <rect width="26" height="1" x=" 6" y="0" fill="#5598D8"></rect>
+     <rect width="25" height="1" x=" 7" y="0" fill="#65A7E1"></rect>
+     <rect width="24" height="1" x=" 8" y="0" fill="#76B4E8"></rect>
+     <rect width="23" height="1" x=" 9" y="0" fill="#87C0ED"></rect>
+     <rect width="22" height="1" x="10" y="0" fill="#98CBF1"></rect>
+     <rect width="21" height="1" x="11" y="0" fill="#A9D5F4"></rect>
+     <rect width="20" height="1" x="12" y="0" fill="#B9DEF7"></rect>
+     <rect width="19" height="1" x="13" y="0" fill="#C8E6F9"></rect>
+     <rect width="18" height="1" x="14" y="0" fill="#D7EEFB"></rect>
+     <rect width="17" height="1" x="15" y="0" fill="#E5F4FD"></rect>
+     <rect width="16" height="1" x="16" y="0" fill="#FFECE7"></rect>
+     <rect width="15" height="1" x="17" y="0" fill="#FFE2DA"></rect>
+     <rect width="14" height="1" x="18" y="0" fill="#FFD6CC"></rect>
+     <rect width="13" height="1" x="19" y="0" fill="#FFCABD"></rect>
+     <rect width="12" height="1" x="20" y="0" fill="#FFBCAD"></rect>
+     <rect width="11" height="1" x="21" y="0" fill="#FFAE9D"></rect>
+     <rect width="10" height="1" x="22" y="0" fill="#FF9E8C"></rect>
+     <rect width=" 9" height="1" x="23" y="0" fill="#FF8D7B"></rect>
+     <rect width=" 8" height="1" x="24" y="0" fill="#FB7B6A"></rect>
+     <rect width=" 7" height="1" x="25" y="0" fill="#F16858"></rect>
+     <rect width=" 6" height="1" x="26" y="0" fill="#E35546"></rect>
+     <rect width=" 5" height="1" x="27" y="0" fill="#D14136"></rect>
+     <rect width=" 4" height="1" x="28" y="0" fill="#BB2E26"></rect>
+     <rect width=" 3" height="1" x="29" y="0" fill="#A11C18"></rect>
+     <rect width=" 2" height="1" x="30" y="0" fill="#820C0A"></rect>
+     <rect width=" 1" height="1" x="31" y="0" fill="#610102"></rect>
+    </svg>
+
+    <div class="progress" style="display: inline-block; height: 20px; width: 70%" >
+      <div id='score' class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  <br/>
+</div>
+</div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- <section class="py-5 grey lighten-4" id="offline-demo">
-  <div class="container">
-    <div class="wow fadeInUp">
-      <h2 class="h1 h1-responsive text-center my-5">Spread the news</h2>
-      <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
-
-      </p>
-    </div>
-
-    <div class="icon-bar" style="text-align: center">
-      <a href="https://www.facebook.com/" class="facebook"><i class="social fa fa-facebook"></i></a>
-      <a href="https://twitter.com/" class="twitter"><i class="social fa fa-twitter"></i></a>
-      <a href="#" class="google"><i class="social fa fa-google"></i></a>
-      <a href="#" class="linkedin"><i class="social fa fa-linkedin"></i></a>
-      <a href="#" class="youtube"><i class="social fa fa-youtube"></i></a>
-    </div>
-
-    </div>
-</section> -->
-
-
-
-
+<script type="text/javascript" src="js/main.js"></script>
+<script src="js/plotly-latest.min.js"></script>
+    
+      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/include_once.js"></script>
 
 <section class="text-center py-5 grey lighten-2" id="download-zone">
   <div class="container">
@@ -520,9 +849,8 @@
     </div>
   </div>
 </section>
-
-
-<section class="text-center py-5" id="links">
+    
+      <section class="text-center py-5" id="links">
   <div>
     <div class="container my-5">
       <div class="wow fadeInUp">
@@ -576,17 +904,8 @@
         </div>
       </div>
     </footer>
-
-    <!-- include jQuery library -->
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/mdb.min.js"></script>
     <script>new WOW().init();</script>
-
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-    <script src="js/plotly-latest.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <!-- <script src="scripts/plotly_heatmap.js"></script> -->
   </body>
 </html>
+    
+    

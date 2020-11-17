@@ -1,0 +1,52 @@
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/include_once.js"></script>
+<link href="styles/heatmap.css" rel="stylesheet">
+<link href="styles/switch.css" rel="stylesheet">
+
+
+<section class="text-center py-5" id="online-demo">
+  <div>
+    <div class="container my-5">
+      <div class="wow fadeInUp">
+        <h2 class="h1 h1-responsive text-center my-5">DEMO</h2>
+        <!-- Try it online :) -->
+        <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
+          Powered by <a href="https://cloud.google.com/appengine">Google App Engine</a>
+        </p>
+      </div>
+
+      <div class="row">
+        {% include 'file_upload.htm' %}
+        {% include 'heatmap.htm' %}
+        <!-- <div class="justify-content-center py-5"><a href="#"> <img class="img-fluid py-2" src="img/google-play.png" alt="google play logo"/></a><a href="#"> <img class="img-fluid py-2" src="img/app-store.png" alt="app store logo"/></a></div> -->
+      </div>
+
+      <br/>
+
+      <div class="row" >
+        <div class="column">
+          <div class="alert alert-primary" role="alert">
+            Predicted Quality
+            <br/><br/>
+            <h3 id="h1_score"></h3>
+          </div>
+        </div>
+        <div class="column">
+          <div class="alert alert-light advancedcfg" role="alert">
+            <p data-toggle="tooltip"  title="Use relative values to better view the heatmap"> Contrast Stretch </p>
+            <!-- Rounded switch -->
+            <label class="switch">
+              <input type="checkbox" id='check_contrast_stretch' checked>
+              <span class="slider round"></span>
+            </label>
+            <!-- <span >?</span> -->
+          </div>
+        </div>
+        {% include 'hist.htm' %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript" src="js/main.js"></script>
+<script src="js/plotly-latest.min.js"></script>

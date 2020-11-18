@@ -1,0 +1,12 @@
+<link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+<input type="file"
+       class="filepond"
+       name="filepond"
+       accept="image/png, image/jpeg, image/gif"/>
+<script>
+//after the input element loaded, otherwise it's null
+FilePond.create(
+ document.querySelector('input'),
+);
+</script>

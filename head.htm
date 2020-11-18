@@ -7,6 +7,8 @@
     <title>{{abbr}}</title>
     <meta name="description" content="Material design app landing page template built by TemplateFlip.com"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="styles/column.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
@@ -19,8 +21,7 @@
     <!-- <link href="styles/social_bar.css" rel="stylesheet"> -->
 
     <!-- include jQuery library -->
-    <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
-
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/mdb.min.js"></script>
@@ -36,6 +37,7 @@
     </script>
 
     <script>
+    const TOP_MARGIN = 25;
     const event = new Event('update_qmap');
     function update_qmap(){
       document.dispatchEvent(event);
@@ -44,6 +46,13 @@
       document.addEventListener('update_qmap', function (e) { /* ... */f(); }, false);
       // elem.addEventListener('build', function (e) { /* ... */ }, false);
     }
+    function do_stretch() {
+      return document.querySelector('#check_contrast_stretch').checked;
+    }
+    // HTML5
+    var width;
+    var height;
+    // https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
     </script>
   </head>
   <body id="top">

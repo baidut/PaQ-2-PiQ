@@ -1,12 +1,44 @@
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="js/include_once.js"></script>
 <!-- Filepond stylesheet -->
-<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
+
+<div class="doublecolumn" style="text-align:center;">
+  <!-- max-width: 50%; -->
+  <br/>
+  <img id='imraw' src='demo/Picture1.jpg' style="width:100%;border: 3px solid black" />
+  <br/>
+  <br/>
+  <div style="white-space:nowrap; ">
+    <!-- overflow-x: scroll -->
+    Click ►
+    <img class='demo_pics' src="demo/Picture2.png">
+    <img class='demo_pics' src="demo/out_of_focus0689.jpg">
+    <img class='demo_pics' src="demo/motion0114.jpg">
+    <img class='demo_pics' src="demo/Picture1.jpg">
+    <img class='demo_pics' src="demo/i07_08_5.bmp">
+    <img class='demo_pics' src="demo/i07_08_4.bmp">
+    <!-- <img class='demo_pics' src="demo/Picture3.jpg"> -->
+    <!-- <img class='demo_pics' src="demo/NoisyLady.png"> -->
+  </div>
+  <br/>
+  <input type="file"
+       class="filepond"
+       name="filepond"
+       style="height: 500" id='filepond' />
+  <!-- <div class="alert alert-primary" role="alert">
+    Step 1: upload your file:
+  </div> -->
+</div>
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+<!--
+<link href="filepond/filepond.min.css" rel="stylesheet">
+<script src="filepond/filepond.min.js"></script> -->
 <script type="text/javascript">
-$(document).ready(function(){
-  // const pond = FilePond.create(); // document.querySelector('.filepond');
-  FilePond.setOptions({
+// https://pqina.nl/filepond/docs/patterns/getting-started/
+// const pond = FilePond.create(); // document.querySelector('.filepond');
+// FilePond.setOptions();
+const pond = FilePond.create(
+  document.querySelector('#filepond'),
+  {
       maxFiles: 1,
       server: {
           // url: 'http://localhost:8080',
@@ -22,53 +54,71 @@ $(document).ready(function(){
               timeout: 7000,
               onload: (response) => {
                  console.log(response);
-                 obj = JSON.parse(response);
+                 window.obj = JSON.parse(response);
                  update_qmap();
               },
               onerror: null,
               ondata: null,
           }
-      }
-  });
-  FilePond.parse(document.body);
-});
+      },
+  }
+);
+pond.onaddfile = function (error, file) {
+    console.log('File added', file);
+    if (error) {
+        console.log('Oh no');
+        return;
+    }
+    f = window.URL.createObjectURL(pond.getFile().file)
+    //console.log(pond.getFile().file)
+    //console.log(f)
+    img = document.querySelector('#imraw')
+    img.src = f
+    // image might contain white padding...
+    console.log({
+      width:img.width, height:img.height,
+      clientWidth:img.clientWidth, clientHeight:img.clientHeight,
+      naturalWidth:img.naturalWidth, naturalHeight:img.naturalHeight,
+       // realWidth:pic_real_width, realHeight:pic_real_height,
+      height:(img.naturalHeight) * img.clientWidth/img.naturalWidth})
+  }
+// FilePond.parse(document.body);
+// pond.onaddfile(
+//   function (error, file) {
+//     console.log('File added', file);
+//     if (error) {
+//         console.log('Oh no');
+//         return;
+//     }
+//     f = window.URL.createObjectURL(pond.getFile().file)
+//     //console.log(pond.getFile().file)
+//     //console.log(f)
+//     document.querySelector('#imraw').src = f
+//   }
+// )
 
-document.addEventListener('FilePond:loaded', e => {
-    console.log('FilePond ready for use', e.detail);
-    const inputElement = document.querySelector('#filepond');
-    const pond = FilePond.create( inputElement );
-
-    pond.on('addfile', (error, file) => {
-        if (error) {
-            console.log('Oh no');
-            return;
-        }
-        //console.log('File added', file);
-        f = window.URL.createObjectURL(pond.getFile().file)
-        //console.log(pond.getFile().file)
-        //console.log(f)
-
-        document.querySelector('#imtest').src = f
-        document.querySelector('#imraw').src = f
-        $('#imtest').fadeTo(1000, 0.2);
-        $('#heatmap').fadeTo(1000, 0);
-        var img = $('#imraw')[0]; // Get my img elem
-        width = img.clientWidth // display size
-        height = top_margin + img.clientHeight
-        $('#image-with-heatmap').height(height);
-        $('#image-with-heatmap').width(width);
-        // $('btn_im_only').trigger('mouseenter');
-    });
-});
+//
+// inputElement.addEventListener('FilePond:addfile', e => {
+//   console.log('File added', e.detail);
+//   if (error) {
+//       console.log('Oh no');
+//       return;
+//   }
+//   console.log('File added', file);
+//   f = window.URL.createObjectURL(pond.getFile().file)
+//   //console.log(pond.getFile().file)
+//   //console.log(f)
+//   document.querySelector('#imraw').src = f
+//   // $('btn_im_only').trigger('mouseenter');
+// });
+//
+//
+// // update image after uploading
+// document.addEventListener('FilePond:loaded', e => {
+//     console.log('FilePond ready for use', e.detail);
+//     const inputElement = document.querySelector('#filepond');
+//     // pond.on('addfile', (error, file) => { //API change!!!
+//     // });
+//
+// });
 </script>
-
-<div class="doublecolumn" style="text-align:center">
-  <br/>
-  <img id='imraw' src='demo/Picture1.jpg' style="width: 100%"></img>
-  <br/>
-  <input type="file" class="filepond" style="height: 500" id='filepond' />
-
-  <!-- <div class="alert alert-primary" role="alert">
-    Step 1: upload your file:
-  </div> -->
-</div>

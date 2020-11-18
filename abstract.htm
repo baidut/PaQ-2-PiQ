@@ -17,6 +17,10 @@ function hide_heatmap(){
 }
 $(document).ready(function(){
   // $("#imgUploaded").hover(hide_image, show_image);
+  // mobile user
+  // $('#image-with-heatmap').hover(hide_heatmap, show_heatmap);
+  // $('#image-with-heatmap').addClass("column");
+  // $('.advancedcfg').hide();
   if( isMobile.any() ) {
     // mobile user
     $('.hovertoggle').bind('touchstart', toggle_heatmap).bind('touchend', toggle_image)

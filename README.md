@@ -24,6 +24,9 @@ Code for our CVPR2020 paper ["*From Patches to Pictures (PaQ-2-PiQ): Mapping the
 
 > We packaged our source code built on FastAI inside FastIQA. **For the pure-python version, check it [this repo](https://github.com/baidut/paq2piq)**!
 
+**Follow [this notebook](https://colab.research.google.com/drive/1M2sW86mCBMRkYFa80tI4M85cP8Nrw_kI?usp=sharing) to reproduce the results in the paper.**
+
+
 ## Installation
 
 * Linux system is recommended

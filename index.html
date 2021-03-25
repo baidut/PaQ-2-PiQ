@@ -66,8 +66,8 @@
           <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item"><a class="nav-link active" href="#abstract">ABOUT</a></li>
-              <li class="nav-item"><a class="nav-link active" href="#applications">APPLICATIONS</a></li>
-              <li class="nav-item"><a class="nav-link active" href="#online-demo">DEMO</a></li>
+              <!-- <li class="nav-item"><a class="nav-link active" href="#applications">APPLICATIONS</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#online-demo">DEMO</a></li> -->
               <li class="nav-item"><a class="nav-link active" href="#links">LINKS</a></li>
               <!-- TODO: media/video -->
               <!--  -->
@@ -103,7 +103,13 @@ Alan Bovik<sup>1+</sup>,
           </div>
 
           <hr>
-            *+Equal contribution
+            <sup>*+</sup>Equal contribution
+            <br>
+            <sup>1</sup> University of Texas at Austin
+            <sup>2</sup> Facebook AI
+          <br/>
+          <!-- Funding statement: this project is funded by Facebook AI. -->
+          This project was supported and funded by Facebook AI.
           <br/>
             <a href='http://cvpr2020.thecvf.com/' ><img src='https://img.shields.io/badge/CVPR-2020-blue.svg' /> </a>
         </div>
@@ -180,6 +186,13 @@ $(document).ready(function(){
 </script>
 <section class="py-5 white" id="abstract">
   <div class="container">
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong></strong>
+      For video quality assesment, check out <a href="https://baidut.github.io/PatchVQ/" target="_blank">PatchVQ.</a>
+    </div>
+
+
     <div class="wow fadeInUp">
       <h2 class="h1 h1-responsive text-center my-5">ABSTRACT</h2>
       <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
@@ -999,6 +1012,14 @@ $(document).ready(function(){
         <!-- <p class="lead blue-grey-text text-center w-responsive mx-auto mb-5">
           Powered by <a href="https://cloud.google.com/appengine">Google App Engine</a>
         </p> -->
+
+        <p class=&quot;px-5 mb-5 pb-3 lead&quot;>References</p> <ol type = &quot;1&quot; align=left>
+<li>D. Ghadiyaram and A. C. Bovik. Massive online crowdsourced study of subjective and objective picture quality. IEEE Transactions on Image Processing, vol. 25, no. 1, pp. 372-387, Jan 2016. 2, 3, 4, 5, 8, 12</li>
+<li>Z. Ying, M. Mandal, D. Ghadiyaram, and A. Bovik, “PatchVQ:’patching up’the video quality problem,” arXiv preprint arXiv:2011.13544, 2020.</li>
+<li>D. Ghadiyaram and A. C. Bovik. Perceptual quality prediction on authentically distorted images using a bag of features approach. Journal of Vision, vol. 17, no. 1, art. 32, pp. 1-25, January 2017. 2</li>
+<li>H. R. Sheikh, M. F. Sabir, and A. C. Bovik. A statistical evaluation of recent full reference image quality assessment algorithms. IEEE Transactions on Image Processing, vol. 15, no. 11, pp. 3440-3451, Nov 2006. 2, 3, 4</li>
+<li>H. Lin, V. Hosu, and D. Saupe. Koniq-10K: Towards an ecologically valid and large-scale IQA database. arXiv preprint arXiv:1803.08489, March 2018. 2, 3, 4, 5, 8, 12</li>
+</ol>
 
         <a href="https://live.ece.utexas.edu/index.php">
           <img src="https://live.ece.utexas.edu/img/live_logo.png" style="width:50%">
